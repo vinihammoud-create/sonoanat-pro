@@ -43,7 +43,7 @@ describe('gerador procedural', () => {
   });
 
   it('buildScene é puro e determinístico', () => {
-    const b = BLOCK_BY_ID.get('supraclavicular')!;
+    const b = BLOCK_BY_ID.get('wrist_block')!;
     const s1 = buildScene(b.id, b.overlays, b.ergonomics.depthCm);
     const s2 = buildScene(b.id, b.overlays, b.ergonomics.depthCm);
     expect(JSON.stringify(s1)).toBe(JSON.stringify(s2));
