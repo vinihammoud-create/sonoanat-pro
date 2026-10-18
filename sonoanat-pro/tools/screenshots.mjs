@@ -30,7 +30,8 @@ const shots = [
 
 const list = extra.length ? extra.map((e) => e.split('=')) : shots;
 for (const [name, hash] of list) {
-  await page.goto(`${baseUrl}/${hash}`, { waitUntil: 'networkidle' });
+  const h = hash.startsWith('#') ? hash : '#/' + hash;
+  await page.goto(`${baseUrl}/${h}`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(900);
   // espera imagens (inclusive as geradas) carregarem
   await page.evaluate(async () => {
