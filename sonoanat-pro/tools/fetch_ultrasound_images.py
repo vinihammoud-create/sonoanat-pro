@@ -139,6 +139,7 @@ def meta_of(root: ET.Element) -> dict:
             year = (el.text or "").strip()
         elif t == "surname" and len(authors) < 3:
             authors.append((el.text or "").strip())
+    authors = [x for x in authors if x not in ('Muacevic', 'Adler')]
     a = ", ".join(x for x in authors if x)
     if len(authors) >= 3:
         a += " et al."
