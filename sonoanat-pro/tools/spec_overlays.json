@@ -1,0 +1,112 @@
+{
+  "_comment": "Overlays e textos fornecidos verbatim pelo documento mestre para 3 bloqueios (o 4º, supraclavicular, já está em src/data/blocks/upper/supraclavicular.ts). Ids internos (peng-block -> peng, popliteal-sciatic -> popliteal_sciatic) devem seguir os ids legados.",
+  "interscalene": {
+    "name": "Bloqueio Interescalênico",
+    "subtitle": "Fenda Interescalênica ao Nível de C6 (Tubérculo de Chassaignac)",
+    "orientation": { "left": "POSTERIOR / LATERAL", "right": "ANTERIOR / MEDIAL" },
+    "ergonomics": {
+      "probe": "Linear de Alta Frequência (10–15 MHz)",
+      "depth": "1.5 a 3.0 cm",
+      "patientPosition": "Decúbito dorsal ou semissentado (Beach Chair), cabeça discretamente rodada para o lado oposto.",
+      "probePosition": "Transversal no pescoço ao nível da cartilagem cricoide (C6). Pode-se fazer o rastreamento reverso (trace-back) a partir da fossa supraclavicular.",
+      "needleApproach": "Em plano (In-Plane), de Posterior/Lateral para Anterior/Medial através do M. Escaleno Médio."
+    },
+    "clinical": {
+      "indications": [
+        "Artroscopia e artroplastia de ombro (Padrão-Ouro)",
+        "Fraturas de úmero proximal e terço médio/lateral da clavícula",
+        "Não cobre adequadamente o tronco inferior (C8-T1 / N. Ulnar — 'Ulnar Sparing')"
+      ],
+      "doses": [
+        { "title": "Anestesia / Analgesia de Ombro", "regimen": "Ropivacaína 0,375% a 0,5%: 10 a 15 mL (Volumes reduzidos de 5-10 mL diminuem duração da paralisia diafragmática)" }
+      ],
+      "pearls": [
+        "As raízes C5, C6 e C7 aparecem alinhadas verticalmente como um 'sinal de trânsito' (semáforo) entre os músculos Escaleno Anterior e Médio.",
+        "O Nervo Frênico corre sobre a superfície ventral do M. Escaleno Anterior (bloqueado em quase 100% dos casos com volumes > 15 mL).",
+        "Nunca avance a agulha na direção do tubérculo anterior/artéria vertebral."
+      ]
+    },
+    "overlays": [
+      { "id": "is-scm", "type": "muscle", "label": "M. Esternocleidomastoideo", "points": "320,85 820,85 760,210 380,185", "label_pos": { "x": 560, "y": 140 }, "note": "Músculo superficial em formato de tira afilando lateralmente sobre os escalenos." },
+      { "id": "is-asm", "type": "muscle", "label": "M. Escaleno Anterior", "points": "520,235 740,260 710,560 510,550", "label_pos": { "x": 625, "y": 400 }, "note": "Situado medialmente/anteriormente às raízes do plexo braquial." },
+      { "id": "is-msm", "type": "muscle", "label": "M. Escaleno Médio", "points": "140,240 390,245 385,560 130,550", "label_pos": { "x": 260, "y": 400 }, "note": "Situado posteriormente/lateralmente à fenda interescalênica." },
+      { "id": "is-c5", "type": "nerve", "label": "Raiz C5", "points": "435,245 475,245 480,295 430,295", "label_pos": { "x": 455, "y": 270 }, "note": "Raiz mais superficial no sulco interescalênico." },
+      { "id": "is-c6", "type": "nerve", "label": "Raiz C6 (Bífida)", "points": "430,330 482,330 485,405 425,405", "label_pos": { "x": 455, "y": 368 }, "note": "Frequentemente apresenta-se subdividida dentro do sulco interescalênico." },
+      { "id": "is-c7", "type": "nerve", "label": "Raiz C7", "points": "430,445 485,445 485,505 428,505", "label_pos": { "x": 455, "y": 475 }, "note": "Raiz mais profunda; atenção à proximidade com a Artéria Vertebral mais profundamente." },
+      { "id": "is-phrenic", "type": "nerve", "label": "N. Frênico", "points": "595,212 630,212 630,235 595,235", "label_pos": { "x": 612, "y": 215 }, "note": "Pequena estrutura oval hipoecoica deslizando sobre a fáscia anterior do M. Escaleno Anterior." },
+      { "id": "is-carotid", "type": "artery", "label": "A. Carótida Comum", "points": "790,320 885,335 890,460 785,455", "label_pos": { "x": 835, "y": 395 }, "note": "Grande vaso pulsátil medial ao M. Escaleno Anterior." },
+      { "id": "is-needle", "type": "needle", "label": "Agulha In-Plane (C5-C6)", "points": "90,190 420,355", "label_pos": { "x": 250, "y": 255 }, "note": "Avanço pelo M. Escaleno Médio mirando o plano fascial entre C5 e C6 sem penetrar o epineuro." }
+    ]
+  },
+  "peng": {
+    "name": "PENG Block (Pericapsular Nerve Group)",
+    "subtitle": "Plano Miofascial entre o Tendão do Psoas e o Ramo Púbico Superior",
+    "orientation": { "left": "LATERAL (EIAI)", "right": "MEDIAL (PÚBIS)" },
+    "ergonomics": {
+      "probe": "Convexo de Baixa Frequência (2–5 MHz) ou Linear em pacientes magros",
+      "depth": "4.0 a 7.0 cm",
+      "patientPosition": "Decúbito dorsal neutro.",
+      "probePosition": "Inicialmente sobre a EIAS no plano transversal e então rodado ~45° alinhado com o ramo púbico até visualizar a EIAI, a Eminência Iliopectínea e o Tendão do Psoas.",
+      "needleApproach": "Em plano (In-Plane), de Lateral para Medial, passando entre a EIAI e o Tendão do Psoas até tocar o periósteo entre a EIAI e a Eminência Iliopectínea."
+    },
+    "clinical": {
+      "indications": [
+        "Analgesia de Fratura de Colo de Fêmur / Quadril na sala de emergência ou pré-raquianestesia",
+        "Artroplastia Total de Quadril (ATQ) — preserva força motora do quadríceps (poupador motor)"
+      ],
+      "doses": [
+        { "title": "Analgesia Pericapsular (N. Femoral, Obturatório e Obturatório Acessório)", "regimen": "Ropivacaína 0,2% a 0,375% ou Levobupivacaína 0,25%: 15 a 20 mL" }
+      ],
+      "pearls": [
+        "O sinal de sucesso ecográfico é a elevação ('lifting') do Tendão do Psoas hiperecoico com dispersão submiofascial sobre o osso.",
+        "Evite injetar dentro da substância do tendão do psoas; se houver alta resistência na seringa, recue 1 mm e gire o bisel.",
+        "Volumes > 25 mL podem dispersar superficialmente e bloquear o tronco do N. Femoral causando fraqueza de quadríceps."
+      ]
+    },
+    "overlays": [
+      { "id": "peng-iliopsoas", "type": "muscle", "label": "M. Iliopsoas", "points": "180,220 710,230 680,455 220,440", "label_pos": { "x": 435, "y": 315 }, "note": "Ventre muscular volumoso repousando anteriormente à cápsula articular do quadril." },
+      { "id": "peng-tendon", "type": "nerve", "label": "Tendão do Psoas (Hiperecoico)", "points": "465,415 545,418 550,468 460,465", "label_pos": { "x": 505, "y": 440 }, "note": "Estrutura oval fortemente hiperecoica logo acima da Eminência Iliopectínea." },
+      { "id": "peng-fem-nerve", "type": "nerve", "label": "N. Femoral", "points": "650,330 715,335 715,380 650,375", "label_pos": { "x": 682, "y": 355 }, "note": "Situado superficialmente à fáscia ilíaca e lateralmente à Artéria Femoral." },
+      { "id": "peng-fem-art", "type": "artery", "label": "A. Femoral", "points": "740,310 815,315 815,390 740,385", "label_pos": { "x": 778, "y": 350 }, "note": "Artéria Femoral medial ao nervo femoral e superficial ao músculo pectíneo/iliopsoas." },
+      { "id": "peng-fem-vein", "type": "vein", "label": "V. Femoral", "points": "830,325 895,330 895,400 830,395", "label_pos": { "x": 862, "y": 365 }, "note": "Veia Femoral compressível situada medialmente à artéria." },
+      { "id": "peng-bone", "type": "bone", "label": "EIAI (Lat) → Eminência Iliopectínea (Med)", "points": "160,445 310,415 430,480 570,480 760,520 760,565 160,565", "label_pos": { "x": 440, "y": 530 }, "note": "Contorno ósseo formando uma concavidade entre a EIAI lateralmente e a Eminência Iliopectínea medialmente." },
+      { "id": "peng-spread", "type": "la_spread", "label": "Dispersão Submiofascial (Elevando o Tendão)", "points": "375,455 565,458 575,482 375,480", "label_pos": { "x": 470, "y": 470 }, "note": "O anestésico local deve hidrodissecar entre o periósteo e o tendão do psoas, elevando-o." },
+      { "id": "peng-needle", "type": "needle", "label": "Agulha In-Plane (Lat → Med)", "points": "95,245 455,472", "label_pos": { "x": 255, "y": 345 }, "note": "Passa medialmente à EIAI até tocar suavemente o osso sob o tendão do psoas." }
+    ]
+  },
+  "popliteal_sciatic": {
+    "name": "Bloqueio Ciático Poplíteo",
+    "subtitle": "Fossa Poplítea ao Nível da Bifurcação (Bainha Paraneural de Vloka)",
+    "orientation": { "left": "LATERAL (BÍCEPS FEMORAL)", "right": "MEDIAL (SEMIMEMBRANOSO)" },
+    "ergonomics": {
+      "probe": "Linear de Alta Frequência (8–14 MHz)",
+      "depth": "2.5 a 4.5 cm",
+      "patientPosition": "Decúbito dorsal com perna elevada em apoio (aberta lateralmente) ou decúbito ventral.",
+      "probePosition": "Na prega poplítea identificando a A. Poplítea, deslizando cranialmente 5–7 cm até o ponto exato onde o N. Tibial e o N. Fibular Comum se fundem dentro da Bainha de Vloka.",
+      "needleApproach": "Em plano (In-Plane), de Lateral para Medial através do M. Bíceps Femoral."
+    },
+    "clinical": {
+      "indications": [
+        "Cirurgias de tornozelo, pé e tendão de Aquiles (associar bloqueio do N. Safeno no Canal dos Adutores para cobertura medial)",
+        "Amputações transmetatarsianas e desbridamentos"
+      ],
+      "doses": [
+        { "title": "Anestesia Cirúrgica / Analgesia Prolongada", "regimen": "Ropivacaína 0,5% ou Levobupivacaína 0,375%–0,5%: 20 mL dentro da Bainha de Vloka" }
+      ],
+      "pearls": [
+        "A injeção subparaneural (dentro da Bainha de Vloka, no septo entre o N. Tibial e o N. Fibular Comum, sem injetar intraneural!) produz o sinal do 'Olho de Boi' e reduz o tempo de latência em 40%.",
+        "Faça o 'Tilting' (inclinação caudal-cranial) do transdutor para corrigir a anisotropia e iluminar o nervo ciático."
+      ]
+    },
+    "overlays": [
+      { "id": "pop-biceps", "type": "muscle", "label": "M. Bíceps Femoral (Lateral)", "points": "80,180 340,220 320,510 80,500", "label_pos": { "x": 205, "y": 350 }, "note": "Parede muscular lateral da fossa poplítea." },
+      { "id": "pop-semimemb", "type": "muscle", "label": "M. Semimembranoso / Semitendinoso", "points": "650,210 910,185 910,505 670,510", "label_pos": { "x": 780, "y": 350 }, "note": "Parede muscular medial da fossa poplítea." },
+      { "id": "pop-vloka", "type": "la_spread", "label": "Bainha de Vloka (Alvo Subparaneural)", "points": "380,255 605,255 615,380 375,380", "label_pos": { "x": 495, "y": 245 }, "note": "Envelope paraneural comum envolvendo os componentes tibial e fibular comum na bifurcação." },
+      { "id": "pop-cpn", "type": "nerve", "label": "N. Fibular Comum (Lateral)", "points": "395,280 480,280 480,355 395,355", "label_pos": { "x": 438, "y": 318 }, "note": "Componente menor e mais lateral da bifurcação ciática." },
+      { "id": "pop-tn", "type": "nerve", "label": "N. Tibial (Medial)", "points": "500,275 595,275 595,360 500,360", "label_pos": { "x": 548, "y": 318 }, "note": "Componente maior e mais medial, situado superficialmente à Veia e Artéria Poplíteas." },
+      { "id": "pop-vein", "type": "vein", "label": "V. Poplítea", "points": "485,405 575,405 575,475 485,475", "label_pos": { "x": 530, "y": 440 }, "note": "Situada entre o Nervo Tibial (superficial) e a Artéria Poplítea (profunda)." },
+      { "id": "pop-artery", "type": "artery", "label": "A. Poplítea", "points": "485,495 575,495 575,570 485,570", "label_pos": { "x": 530, "y": 532 }, "note": "Estrutura pulsátil mais profunda, próxima à superfície posterior do fêmur." },
+      { "id": "pop-needle", "type": "needle", "label": "Agulha In-Plane (Septo Subparaneural)", "points": "90,260 490,318", "label_pos": { "x": 260, "y": 265 }, "note": "Ponta posicionada entre o N. Fibular Comum e o N. Tibial dentro da Bainha de Vloka." }
+    ]
+  }
+}

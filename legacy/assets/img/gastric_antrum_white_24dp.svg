@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="24"
+   viewBox="0 0 6.3499998 6.3500002"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="gastric_antrum.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="44.8"
+     inkscape:cx="11.251878"
+     inkscape:cy="12.669851"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     units="px"
+     inkscape:pagecheckerboard="true"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 2">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 2.2619512,0.73351004 c 0,0 0.00591,-0.25395273 0.2480469,-0.27167037 0.2421411,-0.0177175 0.4606584,-0.094494 0.4842821,0.24214099 C 3.0179761,1.0416451 2.9883743,1.2236979 3.1655506,1.2414156 3.3183412,1.2566946 3.7153665,0.51748296 4.4294084,0.55633371 4.9963027,0.58717822 5.7091287,0.82715424 5.7168898,2.2454148 5.7204554,2.8969863 5.6637366,3.5224304 5.3698359,4.1210547 4.8776675,5.1235158 3.9228317,5.9442053 2.9529389,5.9070589 2.4246519,5.8868258 2.4627511,5.6826358 2.1143043,5.4877416 1.9607515,5.4582123 1.9607515,5.5349888 1.6477399,5.1806361 1.5827753,5.1156715 1.5119047,4.8853422 1.3229166,5.1511067 c 0,0 -0.053153,0.4724702 -0.45475255,0.3071056 0,0 -0.33663504,-0.011812 -0.22442336,-0.4724702 0,0 0.20079986,-0.9803757 0.80319941,-0.7854817 0.082682,0.00591 0.2126116,0.1122116 0.4252232,0.041341 0.3011998,-0.017718 0.5905877,0.2126117 0.8622581,-0.029529 0,0 0.5492467,-0.4960939 0.4606585,-1.3524462 C 3.189174,2.7119791 2.415504,1.4008743 2.3977864,1.3477214 2.305261,1.1429843 2.2752203,1.226331 2.2619512,0.73351004 Z"
+       id="path5739"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csssssssccccccccccc" />
+  </g>
+</svg>

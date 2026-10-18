@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dev-dist/
+*.xapk
+*.apk
+*.tsbuildinfo
+sonoanat-pro/tools/image_raw/
+.DS_Store
+Thumbs.db

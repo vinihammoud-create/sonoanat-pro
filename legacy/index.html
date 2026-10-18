@@ -1,0 +1,1025 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Guia Prático de Bloqueios & Sonoanatomia</title>
+  <style>
+:root {
+  --primary-color: #0b1e36;
+  --primary-accent: #0284c7;
+  --secondary-accent: #0ea5e9;
+  --bg-dark: #070f1a;
+  --surface-card: #0f243e;
+  --surface-card-hover: #163255;
+  --border-subtle: #1e3a5f;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --warning-bg: #451a03;
+  --warning-border: #d97706;
+  --warning-text: #fde68a;
+  --success-color: #10b981;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header & Navbar */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(11, 30, 54, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.brand-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--secondary-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 6px 14px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  width: 100%;
+  font-size: 0.88rem;
+}
+
+.search-input::placeholder {
+  color: var(--text-dim);
+}
+
+/* Main Container */
+.main-wrapper {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Category Grid */
+.section-heading {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.category-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--primary-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15);
+}
+
+.category-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(2, 132, 199, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.category-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.category-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.category-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* Block List & Details View */
+.block-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.block-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+
+.block-card:hover {
+  border-color: var(--secondary-accent);
+}
+
+.block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.block-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.block-badge {
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--secondary-accent);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.clinical-field {
+  margin-bottom: 12px;
+}
+
+.field-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--secondary-accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.field-content {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/* Warnings & Pitfalls */
+.warning-box {
+  background: var(--warning-bg);
+  border-left: 4px solid var(--warning-border);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+}
+
+.warning-title {
+  color: var(--warning-text);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.warning-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.warning-list li {
+  font-size: 0.88rem;
+  color: #fef3c7;
+  margin-bottom: 4px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.warning-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--warning-border);
+}
+
+/* Scientific References Box */
+.references-box {
+  background: rgba(15, 36, 62, 0.6);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.references-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.reference-item {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+/* Back navigation button */
+.btn-back {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--primary-accent);
+}
+
+/* Banner Image in Details */
+.category-banner {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-subtle);
+}
+
+/* Responsive adjust */
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .search-container {
+    max-width: 100%;
+  }
+  .block-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+</style>
+  <link rel="icon" type="image/png" href="assets/img/assets_logo.png">
+</head>
+<body>
+
+  <!-- Header & Busca -->
+  <header class="app-header">
+    <div class="brand-wrapper" id="brand-btn" title="Ir para a página inicial">
+      <img src="assets/img/assets_nysora_logo_colored.png" alt="Logo" class="brand-logo" onerror="this.src='assets/img/anso_logo.png'">
+      <div>
+        <div class="brand-title">Sonoanatomia & Bloqueios</div>
+        <div class="brand-subtitle">Guia Prático Clínico Perioperatório</div>
+      </div>
+    </div>
+    <div class="search-container">
+      <input type="text" id="search-input" class="search-input" placeholder="Buscar bloqueio, nervo ou estrutura...">
+    </div>
+  </header>
+
+  <!-- Container Principal -->
+  <main class="main-wrapper">
+    <div id="content-container">
+      <!-- Injetado dinamicamente via navigation.js -->
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+var CLINICAL_DATA = {
+  "categories": [
+    {
+      "id": "upper_extremity",
+      "title": "Membro Superior",
+      "subtitle": "Bloqueios do Plexo Braquial e Nervos Periféricos",
+      "icon": "assets/img/assets_upperextremitynew.png",
+      "banner": "assets/img/assets_upper_extremitycopy.png",
+      "blocks": [
+        {
+          "id": "interscalene",
+          "name": "Bloqueio Interescalênico do Plexo Braquial",
+          "target": "Raízes C5, C6 e C7 entre os músculos escaleno anterior e médio",
+          "indications": "Cirurgias de ombro, clavícula lateral e terço proximal do úmero (ex: artroscopia, artroplastia de ombro).",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Decúbito dorsal ou semissentado ('beach chair'), cabeça virada contralateralmente (30-45°).",
+          "sonography": "Visualização das raízes C5, C6 e C7 alinhadas verticalmente como estruturas hipoecoicas circulares ('semáforo') entre o escaleno anterior (medial) e escaleno médio (lateral). O músculo esternocleidomastoideo repousa superficialmente.",
+          "needleApproach": "Em plano (in-plane), de lateral para medial. A ponta da agulha é direcionada entre C5 e C6 no espaço interescalênico.",
+          "localAnesthetic": "Ropivacaína 0,375% - 0,5% ou Bupivacaína 0,25% - 0,375%. Volume: 10 a 15 mL.",
+          "pitfalls": [
+            "Paralisia do nervo frênico ocorre em até 100% dos bloqueios de alto volume (cautela máxima em pneumopatas graves).",
+            "Injeção intra-arterial na artéria vertebral.",
+            "Risco de síndrome de Horner (bloqueio da cadeia simpática cervical) e rouquidão (nervo laríngeo recorrente)."
+          ],
+          "references": [
+            "Vandepitte C, et al. Ultrasound-guided interscalene brachial plexus block: safety and efficacy. Reg Anesth Pain Med. 2013;38(2):101-107.",
+            "Neal JM, et al. The ASRA practice advisory on local anesthetic systemic toxicity. Reg Anesth Pain Med. 2018;43(2):113-123."
+          ]
+        },
+        {
+          "id": "supraclavicular",
+          "name": "Bloqueio Supraclavicular do Plexo Braquial",
+          "target": "Divisões e troncos do plexo braquial posterolateral à artéria subclávia",
+          "indications": "Cirurgias de braço, cotovelo, antebraço e mão. O chamado 'bloqueio espinhal do membro superior'.",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Decúbito dorsal com o braço aduzido; cabeça voltada para o lado oposto.",
+          "sonography": "Identificar a artéria subclávia anecoica e pulsátil repousando sobre a primeira costela (hiperecoica com sombra acústica). O plexo braquial aparece como um cacho de uvas hipoecoico posterolateral à artéria. Atenção à pleura (linha hiperecoica brilhante que desliza com a respiração).",
+          "needleApproach": "Em plano, de lateral para medial. Mirar primeiro o 'corner pocket' (canto formado entre a artéria subclávia e a primeira costela) e depois os troncos superficiais.",
+          "localAnesthetic": "Ropivacaína 0,375% - 0,5% ou Lidocaína 1,5% + Bupivacaína 0,25%. Volume: 20 a 25 mL.",
+          "pitfalls": [
+            "Pneumotórax: Sempre identifique a primeira costela e a pleura antes de avançar a agulha.",
+            "Injeção intravascular na artéria subclávia ou ramo escapular dorsal.",
+            "Evitar punção da cúpula pleural medindo profundidade constante."
+          ],
+          "references": [
+            "Perlas A, et al. Ultrasound-guided supraclavicular block: outcome of 510 consecutive cases. Reg Anesth Pain Med. 2008;33(3):259-265.",
+            "Fredrickson MJ, et al. Neurological complication analysis of ultrasound-guided supraclavicular catheter insertion. Br J Anaesth. 2012;108(5):827-832."
+          ]
+        },
+        {
+          "id": "infraclavicular",
+          "name": "Bloqueio Infraclavicular (Abordagem Costoclavicular)",
+          "target": "Cordões lateral, medial e posterior ao redor da artéria axilar",
+          "indications": "Cirurgia de cotovelo, antebraço, punho e mão. Excelente para inserção de cateter contínuo.",
+          "transducer": "Linear de alta frequência ou curvo para pacientes obesos.",
+          "position": "Decúbito dorsal com braço abduzido a 90° se possível.",
+          "sonography": "Artéria axilar no plano profundo aos músculos peitoral maior e menor. No espaço costoclavicular, os três fascículos situam-se juntos, lateralmente à artéria axilar.",
+          "needleApproach": "Em plano, de cefálico para caudal ou de lateral para medial.",
+          "localAnesthetic": "Ropivacaína 0,375% - 0,5%. Volume: 20 a 30 mL.",
+          "pitfalls": [
+            "Estruturas profundas em pacientes obesos, dificultando visualização da ponta da agulha.",
+            "Risco de punção vascular de veia cefálica ou artéria axilar."
+          ],
+          "references": [
+            "Koscielniak-Nielsen ZJ. Ultrasound-guided peripheral nerve blocks in the upper extremity: an update. Curr Opin Anaesthesiol. 2009;22(5):637-642."
+          ]
+        },
+        {
+          "id": "axillary",
+          "name": "Bloqueio Axilar do Plexo Braquial",
+          "target": "Nervos radial, mediano, ulnar e musculocutâneo na fossa axilar",
+          "indications": "Procedimentos do antebraço, punho e mão.",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Braço abduzido a 90°, antebraço flexionado a 90°.",
+          "sonography": "Artéria axilar central. Nervo mediano superficial/anterior à artéria; nervo ulnar superficial/medial; nervo radial posterior/profundo à artéria. O nervo musculocutâneo localiza-se separado, no ventre do músculo coracobraquial.",
+          "needleApproach": "Em plano, de anterior para posterior. Importante infiltrar o nervo musculocutâneo separadamente (3-5 mL) e circundar a artéria para os demais ramos.",
+          "localAnesthetic": "Lidocaína 1,5% ou Ropivacaína 0,375%. Volume: 20 a 25 mL total.",
+          "pitfalls": [
+            "Esquecer de bloquear o nervo musculocutâneo (resulta em falha sensitiva no antebraço lateral).",
+            "Múltiplas veias axilares compressíveis ao redor da artéria; use doppler ou pouca pressão do transdutor."
+          ],
+          "references": [
+            "Sites BD, et al. Incidence of local anesthetic systemic toxicity and postoperative neurologic symptoms. Reg Anesth Pain Med. 2012;37(5):478-482."
+          ]
+        },
+        {
+          "id": "wrist_block",
+          "name": "Bloqueio dos Nervos do Punho (Mediano, Ulnar e Radial)",
+          "target": "Nervos mediano, ulnar e ramo superficial do nervo radial no terço distal do antebraço",
+          "indications": "Cirurgias e procedimentos cirúrgicos na mão, dedos e suturas sem necessidade de bloqueio motor de todo o braço.",
+          "transducer": "Linear de alta frequência (12–18 MHz)",
+          "position": "Decúbito dorsal com antebraço supinado em mesa de apoio.",
+          "sonography": "Nervo mediano ovalado entre os tendões flexores superficiais e profundos. Nervo ulnar imediatamente medial à artéria ulnar sob o flexor ulnar do carpo. Ramo superficial do radial adjacente à artéria radial.",
+          "needleApproach": "Em plano (in-plane) ou fora de plano para cada nervo individualmente.",
+          "localAnesthetic": "Lidocaína 1,5% ou Mepivacaína 1,5% ou Ropivacaína 0,375%. Volume: 3 a 5 mL por nervo.",
+          "pitfalls": [
+            "Evitar punção das artérias radial e ulnar.",
+            "Não injetar sob alta pressão dentro do túnel do carpo."
+          ],
+          "references": [
+            "Delaunay L, et al. Ultrasound-guided wrist block: description of a new technique. Reg Anesth Pain Med. 2009;34(6):592-595."
+          ]
+        },
+        {
+          "id": "cervical_plexus",
+          "name": "Bloqueio do Plexo Cervical Superficial",
+          "target": "Ramos cutâneos C2–C4 no bordo posterior do esternocleidomastoideo (ponto de Erb)",
+          "indications": "Endarterectomia de carótida, cirurgias cervicais superficiais, traqueostomia e fratura de clavícula.",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Decúbito dorsal com a cabeça rodada cerca de 30° contralateralmente.",
+          "sonography": "Bordo posterior do músculo esternocleidomastoideo sobre a fáscia pré-vertebral e músculo levantador da escápula.",
+          "needleApproach": "Em plano, de posterior para anterior, penetrando a fáscia cervical superficial.",
+          "localAnesthetic": "Ropivacaína 0,2% - 0,375% ou Bupivacaína 0,25%. Volume: 5 a 10 mL.",
+          "pitfalls": [
+            "Evitar injeção profunda na bainha carotídea.",
+            "Não penetrar a fáscia pré-vertebral para não atingir o nervo frênico."
+          ],
+          "references": [
+            "Pandit JJ, et al. Superficial or deep cervical plexus block for carotid endarterectomy: a systematic review. Br J Anaesth. 2007;99(2):159-169."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lower_extremity",
+      "title": "Membro Inferior",
+      "subtitle": "Bloqueios Nervosos Lombar, Sacral e Distais",
+      "icon": "assets/img/assets_lowerextremitynew.png",
+      "banner": "assets/img/assets_lower_extremitycopy.png",
+      "blocks": [
+        {
+          "id": "adductor_canal",
+          "name": "Bloqueio do Canal Adutor (Nervo Safeno)",
+          "target": "Nervo safeno e nervo para o vasto medial no canal dos adutores (fáscia subsartorial)",
+          "indications": "Analgesia para artroplastia total de joelho e cirurgias anteromediais de perna e tornozelo.",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Decúbito dorsal com coxa ligeiramente abduzida e rodada externamente.",
+          "sonography": "No terço médio da coxa, o músculo sartório forma o teto do canal. Abaixo do sartório encontra-se a artéria femoral. O nervo safeno surge como uma pequena estrutura hiperecogênica ântero-medial à artéria.",
+          "needleApproach": "Em plano, de lateral para medial através do músculo vasto medial até penetrar a membrana vastoadutora imediatamente lateral à artéria femoral.",
+          "localAnesthetic": "Ropivacaína 0,2% - 0,375% ou Bupivacaína 0,25%. Volume: 15 a 20 mL.",
+          "pitfalls": [
+            "Injeção excessivamente proximal pode bloquear o tronco do nervo femoral e causar fraqueza de quadríceps.",
+            "Punção da artéria ou veia femoral superficial."
+          ],
+          "references": [
+            "Jaeger P, et al. Adductor canal block versus femoral nerve block and quadriceps strength. Anesthesiology. 2013;118(2):409-415.",
+            "Gao F, et al. Comparison of adductor canal block with femoral nerve block for total knee arthroplasty: a meta-analysis. Int J Surg. 2017;40:38-45."
+          ]
+        },
+        {
+          "id": "femoral",
+          "name": "Bloqueio do Nervo Femoral",
+          "target": "Nervo femoral no triângulo femoral, profundamente à fáscia ilíaca",
+          "indications": "Fraturas de fêmur, cirurgias de quadril e fêmur, enxertos de pele.",
+          "transducer": "Linear de alta frequência (10–12 MHz)",
+          "position": "Decúbito dorsal com a perna estendida.",
+          "sonography": "No sulco inguinal: V-A-N (Veia medial, Artéria média, Nervo lateral). O nervo femoral é hiperecogênico, achatado/ovalado, repousando sobre o músculo iliopsoas e coberto pela fáscia ilíaca.",
+          "needleApproach": "Em plano, de lateral para medial, atravessando a fáscia lata e a fáscia ilíaca com perda nítida de resistência ('dois pops').",
+          "localAnesthetic": "Ropivacaína 0,2% - 0,5% ou Bupivacaína 0,25%. Volume: 15 a 20 mL.",
+          "pitfalls": [
+            "Fraqueza acentuada do músculo quadríceps (aumento significativo do risco de quedas pós-operatórias).",
+            "Injeção intravascular na artéria femoral se a agulha for avançada muito medialmente."
+          ],
+          "references": [
+            "Neal JM, et al. ASRA guidelines on local anesthetic systemic toxicity. Reg Anesth Pain Med. 2018;43(2):113-123."
+          ]
+        },
+        {
+          "id": "peng",
+          "name": "Bloqueio PENG (Pericapsular Nerve Group)",
+          "target": "Ramos articulares do nervo femoral, nervo obturador e obturador acessório na eminência iliopúbica",
+          "indications": "Analgesia poupadora de motor para fratura de quadril e artroplastia total de quadril.",
+          "transducer": "Curvo de baixa frequência (2–5 MHz) ou linear em pacientes magros.",
+          "position": "Decúbito dorsal.",
+          "sonography": "Alinhar o transdutor entre a espinha ilíaca ântero-inferior (EIAI) e a eminência iliopúbica. Identificar o tendão do psoas hiperecogênico repousando sobre o osso ilíaco.",
+          "needleApproach": "Em plano, de lateral para medial. A agulha deve ser posicionada sob o tendão do psoas, depositando o anestésico entre o tendão e a superfície óssea do ramo púbico.",
+          "localAnesthetic": "Ropivacaína 0,375% - 0,5%. Volume: 20 mL.",
+          "pitfalls": [
+            "Preserva a força do quadríceps, mas dispersão proximal excessiva pode atingir o nervo femoral.",
+            "Certificar-se do contato com o osso para garantir o plano interfascial profundo."
+          ],
+          "references": [
+            "Girón-Arango L, et al. Pericapsular nerve group (PENG) block for hip fracture: a novel technique with anatomical and clinical basis. Reg Anesth Pain Med. 2018;43(8):859-863.",
+            "Morrison C, et al. Analgesic efficacy of the PENG block in hip fractures: a systematic review. Br J Anaesth. 2021;126(3):723-731."
+          ]
+        },
+        {
+          "id": "popliteal_sciatic",
+          "name": "Bloqueio do Nervo Ciático na Fossa Poplítea",
+          "target": "Nervo ciático antes da bifurcação nos nervos tibial e fibular comum",
+          "indications": "Cirurgias de perna distal, tornozelo e pé (ex: fraturas bimaleolares, tendão de Aquiles).",
+          "transducer": "Linear de alta frequência (8–14 MHz)",
+          "position": "Decúbito ventral, lateral ou dorsal com perna elevada.",
+          "sonography": "Visualizar os vasos poplíteos na fossa poplítea e localizar os nervos tibial e fibular comum que se unem em direção proximal para formar o nervo ciático (normalmente 5–10 cm acima da prega poplítea).",
+          "needleApproach": "Em plano de lateral para medial, ou fora de plano. A agulha é inserida dentro da bainha de Vloka (fáscia comum do ciático).",
+          "localAnesthetic": "Ropivacaína 0,375% - 0,5% ou Bupivacaína 0,375%. Volume: 15 a 20 mL.",
+          "pitfalls": [
+            "Bloquear apenas um dos ramos (se a injeção for realizada abaixo da bifurcação sem abordar ambos os nervos).",
+            "Injeção intraneural com alta pressão."
+          ],
+          "references": [
+            "Prasad A, et al. Ultrasound-guided popliteal sciatic nerve block: a comparison of catheter insertion techniques. Reg Anesth Pain Med. 2010;35(4):379-383."
+          ]
+        },
+        {
+          "id": "fascia_iliaca",
+          "name": "Bloqueio da Fáscia Ilíaca (Abordagem Supra-inguinal)",
+          "target": "Compartimento sob a fáscia ilíaca contendo nervo femoral e cutâneo lateral da coxa",
+          "indications": "Fratura de colo de fêmur no pronto-socorro, artroplastia de quadril e analgesia pós-operatória precoce.",
+          "transducer": "Linear de alta frequência ou curvo para obesos.",
+          "position": "Decúbito dorsal.",
+          "sonography": "Posicionado acima do ligamento inguinal, visualiza-se o músculo ilíaco revestido pela fáscia ilíaca e os músculos abdominais sobrejacentes (arco iliopúbico).",
+          "needleApproach": "Em plano, de caudal para cranial. A agulha deve ultrapassar a fáscia ilíaca para dispersão cefálica do anestésico.",
+          "localAnesthetic": "Ropivacaína 0,2% ou Bupivacaína 0,25%. Volume: 30 a 40 mL (bloqueio de volume dependente).",
+          "pitfalls": [
+            "Volumes baixos resultam em falha do bloqueio do nervo cutâneo lateral ou femoral.",
+            "Evitar injeção intramuscular no ventre do iliopsoas."
+          ],
+          "references": [
+            "Desmet M, et al. A supra-inguinal approach for the fascia iliaca compartment block: a randomized trial. Eur J Anaesthesiol. 2017;34(8):497-504."
+          ]
+        },
+        {
+          "id": "lateral_femoral_cutaneous",
+          "name": "Bloqueio do Nervo Cutâneo Lateral da Coxa (LFCN)",
+          "target": "Nervo cutâneo lateral da coxa próximo à espinha ilíaca ântero-superior (EIAS)",
+          "indications": "Meralgia parestésica, enxertos cutâneos na face lateral da coxa e analgesia complementar de quadril.",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Decúbito dorsal.",
+          "sonography": "Medial e caudal à EIAS. Identificar o músculo sartório e o músculo tensor da fáscia lata. O nervo situa-se na bifurcação fascial entre esses dois músculos.",
+          "needleApproach": "Em plano, de lateral para medial.",
+          "localAnesthetic": "Ropivacaína 0,2% ou Lidocaína 1%. Volume: 5 a 8 mL.",
+          "pitfalls": [
+            "Variação anatômica frequente do trajeto do nervo em relação à EIAS."
+          ],
+          "references": [
+            "Hurdle MF, et al. Ultrasound-guided lateral femoral cutaneous nerve block: technical note. Mayo Clin Proc. 2007;82(11):1458-1460."
+          ]
+        },
+        {
+          "id": "ankle_block",
+          "name": "Bloqueio dos Nervos do Tornozelo (Ankle Block)",
+          "target": "Nervos tibial posterior, fibular profundo, fibular superficial, sural e safeno",
+          "indications": "Cirurgias do pé e podologia sem necessidade de torniquete na coxa.",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Decúbito dorsal ou ventral (para acesso ao nervo tibial e sural).",
+          "sonography": "Tibial posterior: atrás do maléolo medial junto aos vasos tibiais posteriores. Fibular profundo: sobre a tíbia distal ao lado da artéria dorsal do pé. Sural: atrás do maléolo lateral junto à veia safena parva.",
+          "needleApproach": "Em plano ou fora de plano para cada um dos 5 nervos.",
+          "localAnesthetic": "Ropivacaína 0,375% ou Lidocaína 1,5%. Volume: 3 a 5 mL por nervo.",
+          "pitfalls": [
+            "Não utilizar soluções com epinefrina/adrenalina em extremidades distais (risco de isquemia)."
+          ],
+          "references": [
+            "Chin KJ, et al. Ultrasound-guided ankle block: analysis of success rate and anatomical landmarks. Reg Anesth Pain Med. 2011;36(5):511-516."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trunk_abdomen",
+      "title": "Parede Torácica e Abdominal",
+      "subtitle": "Bloqueios Miofasciais do Tronco",
+      "icon": "assets/img/assets_thoraxabdowallnew.png",
+      "banner": "assets/img/assets_thorax_abdowallcopy.png",
+      "blocks": [
+        {
+          "id": "tap_block",
+          "name": "Bloqueio do Plano Transverso Abdominal (TAP Block)",
+          "target": "Ramos anteriores dos nervos espinhais toracoabdominais (T7 a L1)",
+          "indications": "Analgesia somática da parede abdominal para laparotomias, cesarianas, apendicectomia e colecistectomia.",
+          "transducer": "Linear de alta frequência",
+          "position": "Decúbito dorsal.",
+          "sonography": "Posicionar o transdutor na linha axilar média entre a crista ilíaca e a margem costal. Identificar as 3 camadas musculares: oblíquo externo, oblíquo interno e transverso do abdome.",
+          "needleApproach": "Em plano, de ântero-medial para póstero-lateral. O alvo é o plano fascial hiperecoico entre o oblíquo interno e o transverso abdominal.",
+          "localAnesthetic": "Ropivacaína 0,2% - 0,25% ou Bupivacaína 0,25%. Volume: 15 a 20 mL por lado (cuidado com doses cumulativas bilaterais).",
+          "pitfalls": [
+            "Não oferece analgesia visceral (apenas somática da parede parietal).",
+            "Risco de perfuração peritoneal ou lesão hepática/esplênica se a profundidade for perdida."
+          ],
+          "references": [
+            "McDonnell JG, et al. The analgesic efficacy of transversus abdominis plane block after abdominal surgery. Anesth Analg. 2007;104(1):193-197.",
+            "Baeriswyl M, et al. Efficacy of ultrasound-guided transversus abdominis plane block: systematic review and meta-analysis. Anesthesiology. 2015;123(2):399-413."
+          ]
+        },
+        {
+          "id": "esp_block",
+          "name": "Bloqueio do Plano do Eretor da Espinha (ESPB)",
+          "target": "Ramos dorsais e ventrais dos nervos espinhais torácicos sob o músculo eretor da espinha",
+          "indications": "Fraturas de costela, toracotomia, cirurgia de coluna dorsal, cirurgias mamárias e abdominais altas.",
+          "transducer": "Linear (em pacientes magros) ou curvo (em obesos/nível lombar).",
+          "position": "Decúbito ventral, lateral ou sentado.",
+          "sonography": "Aproximadamente 3 cm lateral à linha média (processos espinhosos). Localizar o processo transverso arredondado com sombra acústica. O músculo eretor da espinha recobre o processo transverso.",
+          "needleApproach": "Em plano, de cefálico para caudal. Contatar o processo transverso e injetar para dispersar a fáscia cefalocaudalmente.",
+          "localAnesthetic": "Ropivacaína 0,25% - 0,5%. Volume: 20 a 30 mL.",
+          "pitfalls": [
+            "Identificar erroneamente a costela e pleura como processo transverso (o processo transverso é mais quadrado/rombóide e a pleura não é visível imediatamente abaixo dele).",
+            "Necessita volume generoso para dispersão multissegmentar."
+          ],
+          "references": [
+            "Forero M, et al. The erector spinae plane block: a novel analgesic technique in thoracic neuropathic pain. Reg Anesth Pain Med. 2016;41(5):621-627.",
+            "Kot P, et al. The erector spinae plane block: a review of current evidence and clinical applications. Anaesthesia. 2019;74(5):648-662."
+          ]
+        },
+        {
+          "id": "pecs_block",
+          "name": "Bloqueio PECS I e II (Peitoral e Serrátil)",
+          "target": "Nervos peitorais medial e lateral (PECS I); ramos cutâneos laterais dos intercostais e nervo torácico longo (PECS II)",
+          "indications": "Cirurgia de mama (mastectomia, quadrantectomia, prótese mamária), implante de marca-passo.",
+          "transducer": "Linear de alta frequência (10–15 MHz)",
+          "position": "Decúbito dorsal com o braço em abdução moderada.",
+          "sonography": "Abaixo do terço lateral da clavícula. Identificar o músculo peitoral maior, músculo peitoral menor, e a 3ª/4ª costela com o serrátil anterior subjacente.",
+          "needleApproach": "Em plano, de medial para lateral. Injeção de 10 mL entre peitoral maior e menor (PECS I), e 15 a 20 mL entre peitoral menor e serrátil anterior (PECS II).",
+          "localAnesthetic": "Ropivacaína 0,2% - 0,375%. Volume total: 25 a 30 mL.",
+          "pitfalls": [
+            "Punção da artéria toracoacromial no plano PECS I.",
+            "Pneumotórax se a agulha for direcionada perpendicularmente à caixa torácica."
+          ],
+          "references": [
+            "Blanco R, et al. The 'pecs block': a novel technique for providing analgesia after breast surgery. Anaesthesia. 2011;66(9):847-848."
+          ]
+        },
+        {
+          "id": "quadratus_lumborum",
+          "name": "Bloqueio do Quadrado Lombar (QL Block)",
+          "target": "Planos fasciais adjacentes ao músculo quadrado lombar (QL1 lateral, QL2 posterior ou QL3 anterior/transmuscular)",
+          "indications": "Cirurgias abdominais abertas e laparoscópicas, nefrectomia e artroplastia de quadril com dispersão somática e visceral T7–L2.",
+          "transducer": "Curvo de baixa frequência (2–5 MHz)",
+          "position": "Decúbito lateral ou dorsal.",
+          "sonography": "Sinal do Trevo de Quatro Folhas: processo transverso lombar como haste; músculo psoas anterior; eretor da espinha posterior; quadrado lombar no ápice.",
+          "needleApproach": "Em plano, de posterior para anterior através do músculo eretor da espinha.",
+          "localAnesthetic": "Ropivacaína 0,2% - 0,25%. Volume: 20 a 30 mL por lado.",
+          "pitfalls": [
+            "Estrutura profunda próxima ao rim e peritônio; visualização contínua obrigatória."
+          ],
+          "references": [
+            "El-Boghdadly K, et al. Quadratus lumborum block: terminology and anatomical principles. Anaesthesia. 2016;71(5):598-602."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pocus_sonoanatomy",
+      "title": "Sonoanatomia Clínica & POCUS",
+      "subtitle": "Avaliação Gástrica, Pulmonar e Acesso Vascular Guiado",
+      "icon": "assets/img/assets_headandnecknew.png",
+      "banner": "assets/img/assets_head_and_neckcopy.png",
+      "blocks": [
+        {
+          "id": "gastric_ultrasound",
+          "name": "Avaliação do Antro Gástrico por Ultrassom",
+          "target": "Antro gástrico na região epigástrica / parassagital direita",
+          "indications": "Determinação do status gástrico de jejum em cirurgias de urgência ou esvaziamento retardado (risco de broncoaspiração).",
+          "transducer": "Curvo de baixa frequência (2–5 MHz)",
+          "position": "Decúbito dorsal seguido obrigatoriamente por decúbito lateral direito (DLD).",
+          "sonography": "No plano parassagital epigástrico: lobo esquerdo do fígado (anterior), aorta/veia cava (posterior) e pâncreas. O antro situa-se entre o fígado e o pâncreas. Camada submucosa e muscular espessas ('olho de boi' em jejum).",
+          "needleApproach": "Não invasivo / diagnóstico.",
+          "localAnesthetic": "N/A (Exame de imagem à beira do leito).",
+          "pitfalls": [
+            "Classificação qualitativa de Perlas: Grau 0 (antro vazio em supino e DLD = estômago vazio); Grau 1 (conteúdo líquido visível apenas em DLD = volume baixo habitual); Grau 2 (líquido visível em supino e DLD = estômago cheio, alto risco).",
+            "Conteúdo sólido ou semissólido: aparência mista com sombra acústica suja = alto risco imediato de broncoaspiração."
+          ],
+          "references": [
+            "Perlas A, et al. Validation of a mathematical model for ultrasound assessment of gastric volume by gastroscopy. Anesth Analg. 2013;116(2):357-363.",
+            "Van de Putte P, Perlas A. Ultrasound assessment of gastric content and volume. Br J Anaesth. 2014;113(1):12-22."
+          ]
+        },
+        {
+          "id": "lung_ultrasound",
+          "name": "Ultrassom Pulmonar Perioperatório (Protocolo BLUE)",
+          "target": "Pleura parietal/visceral e parênquima pulmonar anterior e lateral",
+          "indications": "Diagnóstico diferencial de hipóxia súbita, detecção imediata de pneumotórax pós-punção, congestão pulmonar.",
+          "transducer": "Linear (para linha pleural de alta resolução) ou curvo/setorial (para linhas B profundas e derrame).",
+          "position": "Decúbito dorsal ou semissentado.",
+          "sonography": "Sinal do Morcego ('Bat sign'): costelas superior e inferior com a linha pleural intermediária hiperecoica. Deslizamento pleural ('lung sliding') presente no pulmão normal. Linhas A (artefatos de reverberação horizontais normais). Linhas B (cometas verticais móveis indicando edema intersticial).",
+          "needleApproach": "Não invasivo / diagnóstico.",
+          "localAnesthetic": "N/A.",
+          "pitfalls": [
+            "Ausência de deslizamento pleural associada à presença de 'Ponto de Pulmão' (Lung Point) confirma pneumotórax com especificidade de 100%.",
+            "No modo M: 'Sinal da praia' (normal) vs 'Sinal da estratosfera / código de barras' (pneumotórax)."
+          ],
+          "references": [
+            "Lichtenstein DA, Mezière GA. Relevance of lung ultrasound in the diagnosis of acute respiratory failure: the BLUE protocol. Chest. 2008;134(1):117-125."
+          ]
+        },
+        {
+          "id": "vascular_access",
+          "name": "Acesso Venoso Central Guiado (Veia Jugular Interna)",
+          "target": "Veia Jugular Interna (VJI) no ápice do triângulo de Sedillot",
+          "indications": "Cateterização venosa central segura, monitorização hemodinâmica, drogas vasoativas.",
+          "transducer": "Linear de alta frequência (10–15 MHz) em capa estéril.",
+          "position": "Trendelenburg leve a moderado para ingurgitamento venoso, cabeça rodada suavemente (<30° para evitar colapso venoso).",
+          "sonography": "Visualização transversal da artéria carótida interna (redonda, pulsátil, paredes espessas, não compressível) e da veia jugular interna (lateral, ovalada, compressível, fluxo venoso com Doppler).",
+          "needleApproach": "Fora de plano (eixo curto) ou em plano (eixo longo). Confirmação dinâmica do avanço da ponta da agulha perfurando a parede anterior da veia.",
+          "localAnesthetic": "Lidocaína 1% a 2% para infiltração da pele e tecido subcutâneo.",
+          "pitfalls": [
+            "Compressão excessiva pelo transdutor pode colapsar a veia e levar à transfixação e punção acidental da artéria carótida.",
+            "Confirmar a passagem do fio-guia no interior do lúmen venoso em eixo longo antes da dilatação."
+          ],
+          "references": [
+            "Troianos CA, et al. Guidelines for performing ultrasound-guided vascular cannulation. Anesth Analg. 2012;114(1):46-72."
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+</script>
+  <script>
+/**
+ * Controlador de Navegação e Renderização SPA
+ */
+const App = {
+  currentCategory: null,
+  searchQuery: "",
+
+  init() {
+    this.bindEvents();
+    this.renderHome();
+  },
+
+  bindEvents() {
+    const searchInput = document.getElementById("search-input");
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        this.searchQuery = e.target.value.toLowerCase().trim();
+        if (this.searchQuery.length > 0) {
+          this.renderSearchResults(this.searchQuery);
+        } else {
+          if (this.currentCategory) {
+            this.renderCategoryView(this.currentCategory);
+          } else {
+            this.renderHome();
+          }
+        }
+      });
+    }
+
+    const brandBtn = document.getElementById("brand-btn");
+    if (brandBtn) {
+      brandBtn.addEventListener("click", () => {
+        this.currentCategory = null;
+        this.searchQuery = "";
+        if (searchInput) searchInput.value = "";
+        this.renderHome();
+      });
+    }
+  },
+
+  renderHome() {
+    this.currentCategory = null;
+    const container = document.getElementById("content-container");
+    if (!container) return;
+
+    let html = `
+      <div class="section-heading">
+        <h2 class="section-title">Regiões Anatômicas & Sonoanatomia</h2>
+      </div>
+      <div class="category-grid">
+    `;
+
+    CLINICAL_DATA.categories.forEach((cat) => {
+      html += `
+        <div class="category-card" onclick="App.selectCategory('${cat.id}')">
+          <div class="category-icon-wrapper">
+            <img class="category-icon" src="${cat.icon}" alt="${cat.title}" onerror="this.src='assets/img/assets_logo.png'">
+          </div>
+          <div class="category-title">${cat.title}</div>
+          <div class="category-desc">${cat.subtitle}</div>
+          <div style="margin-top: 10px; font-size: 0.78rem; color: var(--secondary-accent); font-weight: 600;">
+            ${cat.blocks.length} técnicas e procedimentos &rarr;
+          </div>
+        </div>
+      `;
+    });
+
+    html += `</div>`;
+    container.innerHTML = html;
+  },
+
+  selectCategory(categoryId) {
+    this.currentCategory = categoryId;
+    this.renderCategoryView(categoryId);
+  },
+
+  renderCategoryView(categoryId) {
+    const category = CLINICAL_DATA.categories.find((c) => c.id === categoryId);
+    if (!category) return;
+
+    const container = document.getElementById("content-container");
+    if (!container) return;
+
+    let html = `
+      <button class="btn-back" onclick="App.renderHome()">
+        <span>&larr;</span> Voltar para Regiões
+      </button>
+
+      <img class="category-banner" src="${category.banner}" alt="${category.title}" onerror="this.style.display='none'">
+
+      <div class="section-heading">
+        <div>
+          <h2 class="section-title">${category.title}</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">${category.subtitle}</p>
+        </div>
+      </div>
+
+      <div class="block-list-container">
+    `;
+
+    category.blocks.forEach((block) => {
+      html += this.buildBlockCard(block);
+    });
+
+    html += `</div>`;
+    container.innerHTML = html;
+  },
+
+  renderSearchResults(query) {
+    const container = document.getElementById("content-container");
+    if (!container) return;
+
+    const matchedBlocks = [];
+    CLINICAL_DATA.categories.forEach((cat) => {
+      cat.blocks.forEach((block) => {
+        const textToSearch = [
+          block.name,
+          block.target,
+          block.indications,
+          block.sonography,
+          block.needleApproach,
+          block.localAnesthetic
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        if (textToSearch.includes(query)) {
+          matchedBlocks.push({ block, categoryTitle: cat.title });
+        }
+      });
+    });
+
+    let html = `
+      <button class="btn-back" onclick="App.renderHome()">
+        <span>&larr;</span> Voltar para o Início
+      </button>
+      <div class="section-heading">
+        <h2 class="section-title">Resultados da Busca ("${query}")</h2>
+        <span style="color: var(--text-muted); font-size: 0.88rem;">${matchedBlocks.length} resultado(s)</span>
+      </div>
+    `;
+
+    if (matchedBlocks.length === 0) {
+      html += `
+        <div style="background: var(--surface-card); padding: 40px; text-align: center; border-radius: 12px;">
+          <p style="color: var(--text-muted);">Nenhum bloqueio ou estrutura encontrada para o termo pesquisado.</p>
+        </div>
+      `;
+    } else {
+      html += `<div class="block-list-container">`;
+      matchedBlocks.forEach(({ block, categoryTitle }) => {
+        html += this.buildBlockCard(block, categoryTitle);
+      });
+      html += `</div>`;
+    }
+
+    container.innerHTML = html;
+  },
+
+  buildBlockCard(block, categoryLabel = null) {
+    return `
+      <div class="block-card" id="block-${block.id}">
+        <div class="block-header">
+          <div>
+            <div class="block-name">${block.name}</div>
+            ${categoryLabel ? `<span style="font-size: 0.78rem; color: var(--text-dim);">${categoryLabel}</span>` : ""}
+          </div>
+          <span class="block-badge">${block.transducer.split(" ")[0]}</span>
+        </div>
+
+        <div class="clinical-field">
+          <div class="field-label">Alvo Anatômico</div>
+          <div class="field-content">${block.target}</div>
+        </div>
+
+        <div class="clinical-field">
+          <div class="field-label">Indicações Clínicas</div>
+          <div class="field-content">${block.indications}</div>
+        </div>
+
+        <div class="clinical-field">
+          <div class="field-label">Transdutor & Posicionamento</div>
+          <div class="field-content"><strong>Transdutor:</strong> ${block.transducer}<br><strong>Posicionamento:</strong> ${block.position}</div>
+        </div>
+
+        <div class="clinical-field">
+          <div class="field-label">Sonoanatomia & Marcos de Referência</div>
+          <div class="field-content">${block.sonography}</div>
+        </div>
+
+        <div class="clinical-field">
+          <div class="field-label">Abordagem da Agulha (Needle In-Plane/Out-of-Plane)</div>
+          <div class="field-content">${block.needleApproach}</div>
+        </div>
+
+        <div class="clinical-field">
+          <div class="field-label">Anestésico Local & Volume Recomendado</div>
+          <div class="field-content" style="color: #38bdf8; font-weight: 600;">${block.localAnesthetic}</div>
+        </div>
+
+        <div class="warning-box">
+          <div class="warning-title">
+            <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24">
+              <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+            </svg>
+            Pontos Críticos & Armadilhas (Pitfalls)
+          </div>
+          <ul class="warning-list">
+            ${block.pitfalls.map((p) => `<li>${p}</li>`).join("")}
+          </ul>
+        </div>
+
+        <div class="references-box">
+          <div class="references-title">Evidências Científicas & Diretrizes (ASRA / BJA / RAPM)</div>
+          ${block.references.map((r) => `<div class="reference-item">${r}</div>`).join("")}
+        </div>
+      </div>
+    `;
+  }
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+  App.init();
+});
+
+</script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+

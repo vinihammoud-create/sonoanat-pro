@@ -1,0 +1,133 @@
+import type { Block } from '@/types';
+
+export const gastricUltrasound: Block = {
+  id: 'gastric_ultrasound',
+  categoryId: 'pocus_sonoanatomy',
+  name: 'Avaliação do Antro Gástrico por Ultrassom',
+  shortName: 'Antro gástrico',
+  subtitle: 'Plano sagital epigástrico • avaliação qualitativa e quantitativa do conteúdo gástrico',
+  target: 'Antro gástrico na região epigástrica / parassagital direita, entre o lobo esquerdo do fígado e o pâncreas',
+  summary:
+    'No plano parassagital epigástrico identificam-se, de anterior para posterior: lobo esquerdo do fígado, antro gástrico, pâncreas, artéria mesentérica superior e aorta (ou veia cava inferior, mais à direita), repousando sobre o corpo vertebral. O antro situa-se entre o fígado e o pâncreas e, em jejum, apresenta parede com cinco camadas e submucosa/muscular espessas, colabado sobre si mesmo ("olho de boi"). Conteúdo líquido distende o antro com lúmen anecoico/hipoecoico; conteúdo sólido produz padrão heterogêneo com sombra acústica suja.',
+  orientation: { left: 'CRANIAL', right: 'CAUDAL' },
+  ergonomics: {
+    probe: 'Curvo de baixa frequência (2–5 MHz)',
+    depthCm: 10,
+    depthText: '8 a 12 cm (até 15 cm em obesos)',
+    patientPosition:
+      'Decúbito dorsal seguido obrigatoriamente por decúbito lateral direito (DLD), posição em que o conteúdo gravita para o antro e a sensibilidade do exame é máxima.',
+    probePosition:
+      'Transdutor curvo no epigástrio, em plano sagital/parassagital direito, com o marcador voltado para cranial (fígado à esquerda da tela). Varrer da linha média para a direita e caudalmente, inclinando o feixe até obter o corte transversal do antro anterior ao pâncreas, com a aorta no plano (nível padronizado de Perlas para medir a área); a veia cava inferior, um pouco mais à direita, é referência alternativa. Repetir a mesma janela em DLD.',
+    needleApproach: 'Não invasivo / diagnóstico.',
+    needleTechnique: 'none',
+    tips: [
+      'Medir a área antral em DLD, entre contrações peristálticas, traçando a serosa externa (incluindo a parede); volume estimado (mL) = 27,0 + 14,6 × área (cm²) − 1,28 × idade (anos).',
+      'Área antral > 340 mm² ou volume > 1,5 mL/kg em DLD sugere estômago cheio em adulto não gestante.',
+    ],
+  },
+  clinical: {
+    indications: [
+      'Determinação do status gástrico de jejum em cirurgias de urgência e emergência',
+      'Pacientes com esvaziamento gástrico retardado (diabetes, gestação, obesidade, opioides, doença renal crônica)',
+      'Avaliação do risco de broncoaspiração quando o tempo de jejum é incerto ou não confiável',
+    ],
+    doses: [
+      { title: 'Anestésico local', regimen: 'Não se aplica (exame diagnóstico)' },
+    ],
+    pearls: [
+      'Classificação qualitativa de Perlas: Grau 0 (antro vazio em supino e DLD = estômago vazio); Grau 1 (conteúdo líquido visível apenas em DLD = volume baixo habitual); Grau 2 (líquido visível em supino e DLD = estômago cheio, alto risco).',
+      'Conteúdo sólido ou semissólido: aparência mista com sombra acústica suja = alto risco imediato de broncoaspiração.',
+      'Líquido claro recém-ingerido aparece anecoico e pode conter bolhas de ar ("céu estrelado") nos primeiros minutos; leite ou líquidos espessos são hiperecoicos e homogêneos.',
+      'A aorta (pulsátil) e a veia cava inferior (compressível, à direita) são as referências posteriores que confirmam o corte correto do antro; o pâncreas fica interposto entre o antro e os vasos.',
+      'Medir sempre entre contrações peristálticas, pois a área varia ao longo do ciclo; usar a média de 2 a 3 medidas.',
+    ],
+    references: [
+      {
+        citation: 'Perlas A, et al. Validation of a mathematical model for ultrasound assessment of gastric volume by gastroscopy. Anesth Analg. 2013;116(2):357-363.',
+        doi: '10.1213/ANE.0b013e318274d445',
+      },
+      {
+        citation: 'Van de Putte P, Perlas A. Ultrasound assessment of gastric content and volume. Br J Anaesth. 2014;113(1):12-22.',
+        doi: '10.1093/bja/aeu151',
+      },
+    ],
+  },
+  overlays: [
+    {
+      id: 'gu-rectus',
+      type: 'muscle',
+      label: 'M. reto abdominal / linha alba',
+      points: '0,62 250,58 500,60 750,58 1000,62 1000,128 750,132 500,130 250,132 0,128',
+      label_pos: { x: 500, y: 95 },
+      echo: 'Banda hipoecoica fina sob a pele e o subcutâneo, com linha hiperecoica da aponeurose (linha alba) na linha média.',
+      note: 'Parede abdominal anterior; o peritônio parietal aparece como linha hiperecoica em sua face profunda.',
+    },
+    {
+      id: 'gu-liver',
+      type: 'organ',
+      label: 'Lobo esquerdo do fígado',
+      points: '0,130 560,130 600,220 560,290 470,322 390,395 230,420 0,420',
+      label_pos: { x: 230, y: 270 },
+      echo: 'Parênquima homogêneo de ecogenicidade média, com vasos tubulares anecoicos; borda caudal afilada em cunha.',
+      note: 'Janela acústica anterior do antro, que fica imediatamente posterior/caudal à sua borda inferior. É o lado cranial da imagem.',
+    },
+    {
+      id: 'gu-antrum',
+      type: 'organ',
+      label: 'Antro gástrico (parede)',
+      points: '680,400 664,448 620,482 560,495 500,482 456,448 440,400 456,352 500,318 560,305 620,318 664,352',
+      label_pos: { x: 560, y: 335 },
+      echo: 'Parede com cinco camadas: mucosa (hiperecoica), muscular da mucosa (hipoecoica), submucosa (hiperecoica), muscular própria (hipoecoica, mais espessa) e serosa (hiperecoica).',
+      note: 'Em jejum, o antro está colabado com paredes espessas e lúmen virtual ("olho de boi"). Graus de Perlas: 0 = vazio em supino e DLD; 1 = líquido apenas em DLD (volume baixo); 2 = líquido em supino e DLD (estômago cheio). Medir a área na serosa externa, em DLD, entre contrações.',
+    },
+    {
+      id: 'gu-lumen',
+      type: 'organ',
+      label: 'Lúmen antral',
+      points: '610,400 600,421 575,433 545,433 520,421 510,400 520,379 545,367 575,367 600,379',
+      label_pos: { x: 560, y: 400 },
+      echo: 'Vazio: linha hiperecoica central (mucosa aposta). Líquido: anecoico/hipoecoico distendendo o antro. Sólido: heterogêneo com sombra acústica suja.',
+      note: 'O conteúdo luminal define a classificação qualitativa; líquido recém-ingerido pode conter bolhas de ar ("céu estrelado").',
+    },
+    {
+      id: 'gu-pancreas',
+      type: 'organ',
+      label: 'Pâncreas (corpo)',
+      points: '420,535 520,520 650,522 820,540 820,590 650,592 520,588 430,580',
+      label_pos: { x: 720, y: 560 },
+      echo: 'Estrutura lobulada, levemente hiperecoica em relação ao fígado, posterior ao antro.',
+      note: 'Referência posterior do antro; interpõe-se entre o estômago e os grandes vasos.',
+    },
+    {
+      id: 'gu-sma',
+      type: 'artery',
+      label: 'A. mesentérica superior',
+      points: '617,608 614,618 605,624 595,624 586,618 583,608 586,598 595,592 605,592 614,598',
+      label_pos: { x: 600, y: 608 },
+      echo: 'Pequeno círculo anecoico pulsátil, envolto por gordura hiperecoica, anterior à aorta.',
+      note: 'Origina-se da face anterior da aorta e desce caudalmente, posterior ao corpo do pâncreas.',
+      alert: 'Não confundir a AMS, a veia mesentérica superior ou a veia renal esquerda com o lúmen antral distendido por líquido: ficam posteriores ao pâncreas e enchem ao Doppler colorido.',
+    },
+    {
+      id: 'gu-aorta',
+      type: 'artery',
+      label: 'Aorta abdominal (eixo longo)',
+      points: '860,668 831,689 750,704 640,710 530,704 449,689 420,668 449,647 530,632 640,626 750,632 831,647',
+      label_pos: { x: 760, y: 668 },
+      echo: 'Tubo anecoico pulsátil de paredes espessas e ecogênicas, imediatamente anterior ao corpo vertebral.',
+      note: 'Vista em eixo longo no plano sagital; a veia cava inferior (compressível, varia com a respiração) aparece ao deslizar o transdutor para a direita.',
+      alert: 'Referência posterior; VCI à direita. A área antral validada (Perlas) é medida no corte em que a aorta está no plano; não confundir a aorta ou a VCI com um antro cheio de líquido (ambas são posteriores ao pâncreas e pulsam/variam com a respiração).',
+    },
+    {
+      id: 'gu-vertebra',
+      type: 'bone',
+      label: 'Corpo vertebral (sombra acústica)',
+      points: '450,730 540,716 640,712 740,716 850,730 850,750 450,750',
+      label_pos: { x: 650, y: 735 },
+      echo: 'Linha hiperecoica curva com sombra acústica posterior completa.',
+      note: 'Limite posterior do campo; a aorta repousa diretamente sobre ele.',
+    },
+  ],
+  images: { mode: 'C' },
+  tags: ['antro gástrico', 'estômago cheio', 'jejum', 'broncoaspiração', 'Perlas', 'POCUS', 'volume gástrico'],
+};
