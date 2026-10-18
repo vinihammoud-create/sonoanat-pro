@@ -3,7 +3,7 @@ import { chromium } from 'playwright-core';
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 
-const [, , baseUrl = 'http://localhost:4173', outDir = 'screens', mode = 'mobile'] = process.argv;
+const [, , baseUrl = 'http://localhost:4173', outDir = 'screens', mode = 'mobile', ...extra] = process.argv;
 await mkdir(outDir, { recursive: true });
 
 const browser = await chromium.launch({ channel: 'msedge', headless: true });
@@ -28,7 +28,8 @@ const shots = [
   ['studio-supraclavicular', '#/studio/supraclavicular'],
 ];
 
-for (const [name, hash] of shots) {
+const list = extra.length ? extra.map((e) => e.split('=')) : shots;
+for (const [name, hash] of list) {
   await page.goto(`${baseUrl}/${hash}`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(900);
   // espera imagens (inclusive as geradas) carregarem

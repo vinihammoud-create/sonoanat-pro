@@ -39,7 +39,7 @@ export function initialViewerState(settings: AppSettings): ViewerState {
     hidden: false,
     flipped: settings.defaultFlipped,
     selectedId: null,
-    pairOpacity: 60,
+    pairOpacity: 0,
   };
 }
 

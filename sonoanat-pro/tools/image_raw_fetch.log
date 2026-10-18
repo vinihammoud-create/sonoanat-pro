@@ -1,0 +1,49 @@
+== interscalene (já salvas: 0)
+   10 artigos para: "interscalene" AND (block OR plexus) AND ultrasound
+   PMC13500028: licença não é CC BY, pulando
+   PMC13625992: licença não é CC BY, pulando
+   PMC13495384: licença não é CC BY, pulando
+   PMC13545579: licença não é CC BY, pulando
+   PMC13450620: licença não é CC BY, pulando
+   PMC13530807: licença não é CC BY, pulando
+   PMC13439140: licença não é CC BY, pulando
+== supraclavicular (já salvas: 0)
+   10 artigos para: "supraclavicular block" AND ultrasound
+   PMC13401916: licença não é CC BY, pulando
+   salvo supraclavicular/PMC13064353_FIG1.jpg (61 KB) — Conceptual overview of the costoclavicular brachial plexus blockCreate
+   salvo supraclavicular/PMC13064353_FIG2.jpg (59 KB) — Anatomical and ultrasound-guided orientation of the costoclavicular br
+   salvo supraclavicular/PMC13064353_FIG3.jpg (59 KB) — Analgesic profile of the costoclavicular brachial plexus blockCreated 
+   salvo supraclavicular/PMC13646560_F1.jpg (25 KB) — Ultrasound image before hydrodissection and nerve block injection of t
+   salvo supraclavicular/PMC13646560_F3.jpg (26 KB) — Horizontal markings signifying proximal and distal location of clips w
+   salvo supraclavicular/PMC13646560_F4.jpg (18 KB) — Intraoperative ultrasound demonstrating two surgical clips (red arrows
+   PMC12244679: licença não é CC BY, pulando
+   PMC12639445: licença não é CC BY, pulando
+   PMC12922525: licença não é CC BY, pulando
+   salvo supraclavicular/PMC13004663_FIG1.jpg (83 KB) — Ultrasound-guided supraclavicular brachial plexus blockTransverse ultr
+   10 artigos para: "supraclavicular brachial plexus" AND ultrasound AND "corner pocket"
+   PMC13380903: licença não é CC BY, pulando
+   PMC12912499: licença não é CC BY, pulando
+   salvo supraclavicular/PMC12617676_FIG2.jpg (73 KB) — Needle direction (blue arrows) from the lateral to the medial directio
+== infraclavicular (já salvas: 0)
+   10 artigos para: "infraclavicular" AND block AND ultrasound AND axillary artery
+   salvo infraclavicular/PMC13565863_jcm-15-06892-f001.jpg (48 KB) — Transducer position for infraclavicular ultrasonographic examination. 
+   salvo infraclavicular/PMC13565863_jcm-15-06892-f002.jpg (118 KB) — Ultrasound images of the brachial plexus cords, axillary artery and ax
+   PMC13399273: licença não é CC BY, pulando
+   salvo infraclavicular/PMC12985950_jcm-15-01931-f002.jpg (63 KB) — Ultrasound-Guided Infraclavicular Brachial Plexus Block Technique. (a)
+   salvo infraclavicular/PMC12985950_jcm-15-01931-f004.jpg (89 KB) — Mechanism of vascular puncture during infraclavicular brachial plexus 
+   salvo infraclavicular/PMC12985950_jcm-15-01931-f005.jpg (73 KB) — Mechanism of pneumothorax during infraclavicular brachial plexus block
+   salvo infraclavicular/PMC13064353_FIG1.jpg (61 KB) — Conceptual overview of the costoclavicular brachial plexus blockCreate
+   salvo infraclavicular/PMC13064353_FIG2.jpg (59 KB) — Anatomical and ultrasound-guided orientation of the costoclavicular br
+   salvo infraclavicular/PMC13064353_FIG3.jpg (59 KB) — Analgesic profile of the costoclavicular brachial plexus blockCreated 
+== axillary (já salvas: 0)
+   10 artigos para: "axillary brachial plexus block" AND ultrasound
+Traceback (most recent call last):
+  File "C:\Users\vinih\Downloads\aplicativo bloqueio anestesio\sonoanat-pro\tools\fetch_ultrasound_images.py", line 288, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\vinih\Downloads\aplicativo bloqueio anestesio\sonoanat-pro\tools\fetch_ultrasound_images.py", line 256, in main
+    print(f"   salvo {key} ({len(data) // 1024} KB) — {fig['caption'][:70]}")
+  File "C:\Users\vinih\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2010' in position 73: character maps to <undefined>

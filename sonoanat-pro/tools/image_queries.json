@@ -1,0 +1,22 @@
+{
+  "interscalene": ["\"interscalene\" AND (block OR plexus) AND ultrasound"],
+  "supraclavicular": ["\"supraclavicular block\" AND ultrasound", "\"supraclavicular brachial plexus\" AND ultrasound AND \"corner pocket\""],
+  "infraclavicular": ["\"infraclavicular\" AND block AND ultrasound AND axillary artery", "\"costoclavicular\" AND block AND ultrasound"],
+  "axillary": ["\"axillary brachial plexus block\" AND ultrasound", "\"axillary block\" AND ultrasound AND musculocutaneous"],
+  "wrist_block": ["\"median nerve\" AND block AND ultrasound AND wrist", "\"wrist block\" AND ultrasound"],
+  "cervical_plexus": ["\"cervical plexus block\" AND ultrasound AND sternocleidomastoid"],
+  "femoral": ["\"femoral nerve block\" AND ultrasound AND fascia iliaca"],
+  "fascia_iliaca": ["\"fascia iliaca\" AND block AND ultrasound AND suprainguinal"],
+  "peng": ["\"pericapsular nerve group\" AND ultrasound", "\"PENG block\" AND ultrasound"],
+  "lateral_femoral_cutaneous": ["\"lateral femoral cutaneous nerve\" AND block AND ultrasound"],
+  "adductor_canal": ["\"adductor canal block\" AND ultrasound AND saphenous"],
+  "popliteal_sciatic": ["\"popliteal\" AND sciatic AND block AND ultrasound"],
+  "ankle_block": ["\"ankle block\" AND ultrasound AND tibial", "\"posterior tibial nerve\" AND block AND ultrasound"],
+  "tap_block": ["\"transversus abdominis plane\" AND block AND ultrasound"],
+  "esp_block": ["\"erector spinae plane block\" AND ultrasound AND transverse process"],
+  "pecs_block": ["\"pectoral nerve\" AND block AND ultrasound AND pectoralis", "\"PECS block\" AND ultrasound"],
+  "quadratus_lumborum": ["\"quadratus lumborum block\" AND ultrasound"],
+  "gastric_ultrasound": ["\"gastric antrum\" AND ultrasound AND anesthesia", "\"gastric ultrasound\" AND antrum AND volume"],
+  "lung_ultrasound": ["\"lung ultrasound\" AND \"A-lines\" AND pleural line", "\"lung sliding\" AND ultrasound AND pneumothorax"],
+  "vascular_access": ["\"internal jugular vein\" AND ultrasound AND cannulation AND carotid"]
+}
