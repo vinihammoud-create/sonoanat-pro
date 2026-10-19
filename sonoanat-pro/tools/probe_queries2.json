@@ -1,0 +1,14 @@
+{
+  "cervical_plexus": ["\"superficial cervical plexus\" AND block AND ultrasound", "\"cervical plexus block\" AND ultrasound AND image AND sternocleidomastoid"],
+  "femoral": ["\"femoral nerve block\" AND ultrasound AND (photograph OR \"clinical setup\" OR \"needle insertion\")"],
+  "adductor_canal": ["\"adductor canal block\" AND ultrasound AND (photograph OR \"probe position\" OR \"needle insertion\" OR \"clinical setup\")"],
+  "lateral_femoral_cutaneous": ["\"lateral femoral cutaneous\" AND ultrasound AND (photograph OR \"probe position\" OR \"needle insertion\")"],
+  "tap_block": ["\"transversus abdominis plane\" AND ultrasound AND (photograph OR \"probe position\" OR \"needle insertion\" OR \"clinical setup\")"],
+  "wrist_block": ["(\"median nerve block\" OR \"wrist block\") AND ultrasound AND (photograph OR \"probe position\" OR \"needle insertion\")"],
+  "axillary": ["\"axillary brachial plexus block\" AND ultrasound AND (photograph OR \"probe position\" OR \"needle insertion\" OR \"clinical setup\")"],
+  "vascular_access": ["\"internal jugular\" AND ultrasound AND cannulation AND (photograph OR \"probe position\" OR \"needle insertion\")"],
+  "gastric_ultrasound": ["\"gastric antrum\" AND ultrasound AND (photograph OR \"probe position\" OR \"probe placement\" OR epigastric)"],
+  "lung_ultrasound": ["\"lung ultrasound\" AND (photograph OR \"probe position\" OR \"probe placement\") AND (BLUE OR anterior chest)"],
+  "fascia_iliaca": ["\"fascia iliaca\" AND block AND ultrasound AND (photograph OR \"probe position\" OR \"needle insertion\" OR \"clinical setup\")"],
+  "infraclavicular": ["\"infraclavicular\" AND block AND ultrasound AND (photograph OR \"needle insertion\" OR \"clinical setup\")"]
+}

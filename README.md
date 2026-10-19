@@ -18,23 +18,23 @@ npm test           # testes (vitest)
 ## O que tem
 
 - 20 técnicas em 4 regiões: membro superior, membro inferior, parede torácica/abdominal e POCUS.
-- Visualizador 4:3 com imagem de ultrassom e overlays SVG por camada (nervos, artérias, veias, músculos, osso, pleura, agulha, dispersão do anestésico), zoom até 350%, espelhar, "Segure: US puro", legendas ON/OFF e opacidade.
-- "Localizar estrutura": toque num chip e a estrutura é destacada na imagem; toque na imagem e o rodapé mostra aspecto ecográfico e alertas.
-- 3 abas por bloqueio: Sonoanatomia, Ergonomia & Probe, Doses & Guia Clínico (indicações, doses, pérolas, referências com DOI).
+- Cada bloqueio tem três vistas, como no AnSo: **Sonoanatomia** (imagem real de ultrassom, limpa), **Ergonomia** (fotos reais da posição do paciente e do transdutor) e **Notas** (indicações, posicionamento, transdutor, agulha, doses, pérolas, referências com DOI).
+- Na sonoanatomia, a lista de estruturas fica abaixo da imagem: toque numa estrutura e ela aparece colorida sobre a imagem; toque de novo e some. "Mostrar todas", "Segure: US puro", nomes na imagem, espelhar, zoom até 350%.
+- Imagens reais de artigos de acesso aberto (licença CC BY), com a fonte citada em cada imagem. Alguns bloqueios têm par pré/pós-injeção (controle "Imagem anotada pelos autores").
 - Estúdio de anotação: carregue sua própria foto de ultrassom, desenhe polígonos/agulha, posicione legendas, salve no aparelho (IndexedDB).
-- Modo B: par de imagens (US puro + anotada) com slider.
-- Backup/importação em `.json`, favoritos, instalação como app (PWA).
-- Quando um bloqueio não tem foto real, o app gera uma simulação B-mode determinística (speckle, sombra acústica, vasos anecoicos, régua de profundidade).
+- Backup/importação em `.json`, favoritos, instalação como app (PWA offline).
 
 ## Telas
 
-| Início | Região | Bloqueio |
+| Imagem limpa | Estrutura ligada | Ergonomia |
 |---|---|---|
-| ![](sonoanat-pro/docs/screens/home.png) | ![](sonoanat-pro/docs/screens/category-upper.png) | ![](sonoanat-pro/docs/screens/block-supraclavicular.png) |
+| ![](sonoanat-pro/docs/screens/bloqueio-limpo.png) | ![](sonoanat-pro/docs/screens/bloqueio-estrutura.png) | ![](sonoanat-pro/docs/screens/ergonomia.png) |
+
+No computador a lista fica à direita da imagem: ![](sonoanat-pro/docs/screens/desktop.png)
 
 ## Imagens reais
 
-`sonoanat-pro/tools/fetch_ultrasound_images.py` busca figuras de ultrassom com licença CC BY em artigos de acesso aberto (Europe PMC / PubMed Central). Cada imagem usada traz atribuição no app e em `sonoanat-pro/public/images/real/ATTRIBUTION.md`.
+`sonoanat-pro/tools/fetch_ultrasound_images.py` busca figuras com licença CC BY em artigos de acesso aberto (Europe PMC / PubMed Central); `tools/crop-frac.mjs` recorta os painéis. Cada imagem usada traz atribuição no app, na tela Licenças e em `sonoanat-pro/public/images/real/ATTRIBUTION.md`. Nenhuma imagem do app AnSo ou de outros apps comerciais é usada.
 
 ## Aviso
 
