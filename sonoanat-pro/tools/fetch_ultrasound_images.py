@@ -168,7 +168,9 @@ def main() -> int:
     ap.add_argument("--max-per-block", type=int, default=8)
     ap.add_argument("--blocks", default="", help="lista separada por vírgula para limitar os blocos")
     ap.add_argument("--no-openi", action="store_true")
+    ap.add_argument("--caption-regex", default="", help="regex alternativo para filtrar legendas (ex.: posição do transdutor)")
     args = ap.parse_args()
+    cap_re = re.compile(args.caption_regex, re.I) if args.caption_regex else None
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -221,7 +223,10 @@ def main() -> int:
                     if saved >= args.max_per_block:
                         break
                     cap = f"{fig['label']} {fig['caption']}"
-                    if not US_WORDS.search(cap) or NOT_US.search(cap):
+                    if cap_re is not None:
+                        if not cap_re.search(cap):
+                            continue
+                    elif not US_WORDS.search(cap) or NOT_US.search(cap):
                         continue
                     base = fig["href"].rsplit("/", 1)[-1].rsplit(".", 1)[0]
                     url = blobs.get(base)

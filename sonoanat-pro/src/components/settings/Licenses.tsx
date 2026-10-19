@@ -9,6 +9,7 @@ export function Licenses() {
   for (const b of BUILTIN_BLOCKS) {
     if (b.images.attribution) entries.push({ blockName: b.name, attribution: b.images.attribution });
     for (const g of b.gallery ?? []) if (g.attribution) entries.push({ blockName: b.name, attribution: g.attribution });
+    for (const p of b.probeImages ?? []) if (p.attribution) entries.push({ blockName: `${b.name} (ergonomia)`, attribution: p.attribution });
   }
   return (
     <div>

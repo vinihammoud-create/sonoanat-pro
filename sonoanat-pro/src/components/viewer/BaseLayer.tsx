@@ -1,7 +1,7 @@
 import type { EffectiveBlock } from '@/types';
-import { useGeneratedImage } from '@/hooks/useGeneratedImage';
 import { useObjectUrl } from '@/db/blobs';
 import { findUserImage } from '@/db/merge';
+import { Icon } from '@/components/common/Icon';
 
 export interface BaseLayerProps {
   block: EffectiveBlock;
@@ -14,7 +14,7 @@ export interface BaseLayerProps {
   overrideBaseUrl?: string | null;
 }
 
-/** Imagem de fundo do viewer: real (A/B) ou procedural (C). */
+/** Imagem real de fundo do viewer (built-in ou carregada pelo usuário). */
 export function BaseLayer({ block, flipped, pairOpacity, hideAnnotated, overrideBaseUrl }: BaseLayerProps) {
   const { images, userImages } = block;
   const baseRow = findUserImage(userImages, images.baseImageId);
@@ -22,10 +22,7 @@ export function BaseLayer({ block, flipped, pairOpacity, hideAnnotated, override
   const baseUserUrl = useObjectUrl(baseRow?.blob);
   const annotatedUserUrl = useObjectUrl(annotatedRow?.blob);
 
-  const hasReal = images.mode !== 'C' && (!!images.baseUrl || !!baseUserUrl || !!overrideBaseUrl);
-  const generated = useGeneratedImage(block.id, block.overlays, block.ergonomics.depthCm, !hasReal && !overrideBaseUrl);
-
-  const baseUrl = overrideBaseUrl ?? (images.mode === 'C' ? generated.url : baseUserUrl ?? images.baseUrl ?? generated.url);
+  const baseUrl = overrideBaseUrl ?? baseUserUrl ?? images.baseUrl ?? null;
   const annotatedUrl = images.mode === 'B' ? annotatedUserUrl ?? images.annotatedUrl ?? null : null;
   const flipStyle = flipped ? { transform: 'scaleX(-1)' } : undefined;
 
@@ -34,8 +31,9 @@ export function BaseLayer({ block, flipped, pairOpacity, hideAnnotated, override
       {baseUrl ? (
         <img src={baseUrl} alt="" draggable={false} className="h-full w-full select-none object-contain" />
       ) : (
-        <div className="flex h-full w-full items-center justify-center text-xs text-slate-500">
-          {generated.error ? `Erro: ${generated.error}` : 'Gerando imagem…'}
+        <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-slate-900 text-slate-500">
+          <Icon name="image" size={36} />
+          <p className="text-xs">Imagem real em preparação</p>
         </div>
       )}
       {annotatedUrl && (

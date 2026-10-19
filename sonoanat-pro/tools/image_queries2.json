@@ -1,0 +1,9 @@
+{
+  "lung_ultrasound": ["lung ultrasound AND (\"A-lines\" OR \"A lines\") AND \"pleural line\" AND normal", "\"lung sliding\" AND ultrasound AND \"bat sign\"", "\"lung ultrasound\" AND pneumothorax AND \"lung point\" AND image"],
+  "vascular_access": ["\"internal jugular vein\" AND ultrasound AND \"short axis\" AND carotid", "\"internal jugular\" AND \"ultrasound-guided\" AND cannulation AND image", "\"central venous\" AND ultrasound AND jugular AND carotid AND image"],
+  "pecs_block": ["\"pectoral nerve\" AND block AND ultrasound AND \"pectoralis minor\"", "\"PECS II\" AND ultrasound", "\"serratus anterior plane block\" AND ultrasound AND image", "\"interpectoral\" AND block AND ultrasound"],
+  "quadratus_lumborum": ["\"quadratus lumborum\" AND block AND ultrasound AND shamrock", "\"quadratus lumborum block\" AND ultrasound AND image AND psoas", "\"QL block\" AND ultrasound"],
+  "axillary": ["\"axillary brachial plexus\" AND ultrasound AND \"median nerve\" AND \"radial nerve\"", "\"axillary block\" AND ultrasound AND image AND musculocutaneous", "\"axillary approach\" AND \"brachial plexus\" AND ultrasound"],
+  "wrist_block": ["\"median nerve\" AND ultrasound AND wrist AND \"cross-sectional area\"", "\"median nerve\" AND ultrasound AND \"carpal tunnel\" AND image", "\"ulnar nerve\" AND ultrasound AND wrist AND \"Guyon\""],
+  "cervical_plexus": ["\"superficial cervical plexus block\" AND ultrasound", "\"cervical plexus\" AND block AND ultrasound AND sternocleidomastoid AND image", "\"intermediate cervical plexus block\" AND ultrasound"]
+}

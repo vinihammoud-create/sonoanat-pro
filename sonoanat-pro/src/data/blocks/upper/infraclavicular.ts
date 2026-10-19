@@ -195,5 +195,21 @@ export const infraclavicular: Block = {
       caption: 'Região infraclavicular: fascículos do plexo braquial, artéria e veia axilares, peitoral maior e menor. Painel A sem anotação; painel B anotado pelos autores (PMJM, PMNM, AA, AV, LC, MC, PC).',
     },
   },
+  probeImages: [{
+    mode: 'A',
+    baseUrl: 'images/real/infraclavicular/petrov2026_f1_probe.webp',
+    attribution: {
+      title: 'Bilateral Ultrasonographic Mapping and Morphometry of the Infraclavicular Brachial Plexus: A Prospective Multicenter Study',
+      authors: 'Petrov, Dimitrov, Barbutska et al.',
+      journal: 'Journal of Clinical Medicine',
+      year: '2026',
+      license: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
+      sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13565863/',
+      pmcid: 'PMC13565863',
+      figure: 'Figura 1',
+      caption: 'Transdutor linear na região infraclavicular média, logo abaixo do terço médio da clavícula, em orientação parassagital (craniocaudal). O retângulo azul marca a posição do transdutor; as setas indicam cranial, caudal, medial e lateral.',
+    },
+  }],
   tags: ['plexo braquial', 'fascículos', 'artéria axilar', 'membro superior', 'cateter contínuo', 'mão', 'antebraço', 'cotovelo'],
 };

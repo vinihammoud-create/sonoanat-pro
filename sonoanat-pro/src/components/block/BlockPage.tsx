@@ -1,25 +1,29 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TopBar } from '@/components/layout/TopBar';
 import { useEffectiveBlock } from '@/hooks/useEffectiveBlock';
-import { BLOCK_TABS, Tabs, isBlockTab, type BlockTab } from './Tabs';
+import { Tabs, normalizeTab, type BlockTab, type RailItem } from './Tabs';
 import { SonoanatomyTab } from './SonoanatomyTab';
-import { ErgonomicsTab } from './ErgonomicsTab';
-import { ClinicalTab } from './ClinicalTab';
+import { NotesTab } from './NotesTab';
+import { ProbeView } from '@/components/viewer/ProbeView';
 import { EmptyState } from '@/components/common/Card';
 import { Icon } from '@/components/common/Icon';
 import { useFavorites } from '@/hooks/useSettings';
 import { toggleFavorite } from '@/db/repo';
 import { CATEGORY_BY_ID } from '@/data/categories';
+import { cx } from '@/utils/format';
+
+const ORDER: BlockTab[] = ['sonoanatomia', 'ergonomia', 'notas'];
 
 export function BlockPage() {
   const { blockId, tab } = useParams();
   const navigate = useNavigate();
   const { block, notFound } = useEffectiveBlock(blockId);
-  const active: BlockTab = isBlockTab(tab) ? tab : 'sonoanatomia';
+  const active = normalizeTab(tab);
   const favorites = useFavorites();
   const swipe = useRef<{ x: number; y: number } | null>(null);
+  const [probeIndex, setProbeIndex] = useState(0);
 
   useEffect(() => {
     document.title = block ? `${block.shortName} · SonoAnat Pro` : 'SonoAnat Pro';
@@ -39,7 +43,14 @@ export function BlockPage() {
     );
   }
 
-  const idx = BLOCK_TABS.findIndex((t) => t.id === active);
+  const probes = block.probeImages ?? [];
+  const items: RailItem[] = [
+    { id: 'sonoanatomia', label: 'Sonoanatomia', icon: 'layers', count: block.images.baseUrl ? 1 + (block.gallery?.length ?? 0) : 0 },
+    { id: 'ergonomia', label: 'Ergonomia', icon: 'probe', count: probes.length },
+    { id: 'notas', label: 'Notas', icon: 'book' },
+  ];
+
+  const idx = ORDER.indexOf(active);
   const onTouchStart = (e: React.TouchEvent) => {
     swipe.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
   };
@@ -50,10 +61,9 @@ export function BlockPage() {
     const dx = e.changedTouches[0].clientX - s.x;
     const dy = e.changedTouches[0].clientY - s.y;
     if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)) return;
-    // Não troca de aba quando o gesto começa dentro do viewer (pan/zoom).
     if ((e.target as Element).closest('[data-no-swipe]')) return;
-    const next = BLOCK_TABS[dx < 0 ? idx + 1 : idx - 1];
-    if (next) setTab(next.id);
+    const next = ORDER[dx < 0 ? idx + 1 : idx - 1];
+    if (next) setTab(next);
   };
 
   const category = CATEGORY_BY_ID.get(block.categoryId);
@@ -62,8 +72,8 @@ export function BlockPage() {
   return (
     <div onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <TopBar
-        title={block.shortName}
-        subtitle={category?.title}
+        title={block.name}
+        subtitle={`${category?.title ?? ''} · ${block.subtitle}`}
         showBack
         backTo={`/c/${block.categoryId}`}
         right={
@@ -77,18 +87,38 @@ export function BlockPage() {
             >
               <Icon name={fav ? 'starFilled' : 'star'} size={20} />
             </button>
-            <Link to={`/studio/${block.id}`} aria-label="Abrir no Estúdio" className="flex h-11 w-11 items-center justify-center rounded-lg text-slate-300 hover:bg-slate-800">
+            <Link to={`/studio/${block.id}`} aria-label="Editar no Estúdio" className="flex h-11 w-11 items-center justify-center rounded-lg text-slate-300 hover:bg-slate-800">
               <Icon name="studio" size={20} />
             </Link>
           </>
         }
       />
-      <h2 className="mb-0.5 text-lg font-semibold leading-tight">{block.name}</h2>
-      <p className="mb-3 text-xs text-slate-400">{block.subtitle}</p>
-      <Tabs active={active} onChange={setTab} />
-      {active === 'sonoanatomia' && <SonoanatomyTab block={block} />}
-      {active === 'ergonomia' && <ErgonomicsTab block={block} />}
-      {active === 'clinico' && <ClinicalTab block={block} />}
+      <div className="md:flex md:gap-4">
+        <Tabs items={items} active={active} onChange={setTab} />
+        <div className="min-w-0 flex-1">
+          {active === 'sonoanatomia' && <SonoanatomyTab block={block} />}
+          {active === 'ergonomia' && (
+            <div>
+              {probes.length > 1 && (
+                <div className="mb-2 flex gap-1.5">
+                  {probes.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setProbeIndex(i)}
+                      className={cx('min-h-9 rounded-lg border px-3 text-xs font-semibold', probeIndex === i ? 'border-slate-100 bg-slate-100 text-slate-950' : 'border-slate-700 text-slate-300')}
+                    >
+                      Foto {i + 1}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <ProbeView block={block} image={probes[Math.min(probeIndex, Math.max(0, probes.length - 1))]} />
+            </div>
+          )}
+          {active === 'notas' && <NotesTab block={block} />}
+        </div>
+      </div>
     </div>
   );
 }

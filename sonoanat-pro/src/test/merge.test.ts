@@ -28,14 +28,21 @@ describe('merge built-in + override', () => {
 });
 
 describe('viewer reducer', () => {
-  it('toggles, tudo on/off, opacidade limitada e hold', () => {
+  it('começa limpo, alterna estruturas, todas/limpar, opacidade limitada e hold', () => {
     let s = initialViewerState(DEFAULT_SETTINGS);
-    s = viewerReducer(s, { type: 'toggleLayer', layer: 'nerve' });
-    expect(s.visible.nerve).toBe(false);
-    s = viewerReducer(s, { type: 'allOff' });
-    expect(Object.values(s.visible).every((v) => !v)).toBe(true);
-    s = viewerReducer(s, { type: 'allOn' });
-    expect(Object.values(s.visible).every((v) => v)).toBe(true);
+    expect(s.shown.size).toBe(0);
+    s = viewerReducer(s, { type: 'toggle', id: 'a' });
+    expect(s.shown.has('a')).toBe(true);
+    expect(s.selectedId).toBe('a');
+    s = viewerReducer(s, { type: 'toggle', id: 'a' });
+    expect(s.shown.has('a')).toBe(false);
+    expect(s.selectedId).toBeNull();
+    s = viewerReducer(s, { type: 'showAll', ids: ['a', 'b'] });
+    expect(s.shown.size).toBe(2);
+    s = viewerReducer(s, { type: 'clear' });
+    expect(s.shown.size).toBe(0);
+    s = viewerReducer(s, { type: 'select', id: 'b' });
+    expect(s.shown.has('b')).toBe(true);
     s = viewerReducer(s, { type: 'setOpacity', value: 3 });
     expect(s.opacity).toBe(15);
     s = viewerReducer(s, { type: 'setOpacity', value: 500 });

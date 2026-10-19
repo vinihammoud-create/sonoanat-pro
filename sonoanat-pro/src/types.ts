@@ -124,6 +124,8 @@ export interface Block {
   images: ImageSet;
   /** Imagens reais adicionais (galeria), com atribuição. */
   gallery?: ImageSet[];
+  /** Fotos reais da posição do paciente/transdutor (ergonomia). */
+  probeImages?: ImageSet[];
   tags?: string[];
 }
 

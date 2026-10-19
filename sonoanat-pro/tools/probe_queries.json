@@ -1,0 +1,22 @@
+{
+  "interscalene": ["interscalene block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "supraclavicular": ["supraclavicular block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "infraclavicular": ["infraclavicular block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "axillary": ["axillary brachial plexus block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "wrist_block": ["(median nerve OR ulnar nerve) AND wrist AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "cervical_plexus": ["cervical plexus block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "femoral": ["femoral nerve block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "fascia_iliaca": ["fascia iliaca block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "peng": ["pericapsular nerve group AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "lateral_femoral_cutaneous": ["lateral femoral cutaneous nerve AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "adductor_canal": ["adductor canal block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "popliteal_sciatic": ["popliteal sciatic block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "ankle_block": ["ankle block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "tap_block": ["transversus abdominis plane block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "esp_block": ["erector spinae plane block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "pecs_block": ["(pectoral nerve block OR PECS block OR serratus anterior plane block) AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "quadratus_lumborum": ["quadratus lumborum block AND ultrasound AND (transducer OR probe) AND (position OR placement)"],
+  "gastric_ultrasound": ["gastric ultrasound AND antrum AND (transducer OR probe) AND (position OR placement)"],
+  "lung_ultrasound": ["lung ultrasound AND (transducer OR probe) AND (position OR placement) AND (BLUE protocol OR pleural line)"],
+  "vascular_access": ["internal jugular vein AND ultrasound AND cannulation AND (transducer OR probe) AND (position OR placement)"]
+}

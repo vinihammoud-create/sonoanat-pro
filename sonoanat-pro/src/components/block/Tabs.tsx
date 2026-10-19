@@ -1,21 +1,31 @@
 import { Icon, type IconName } from '@/components/common/Icon';
 import { cx } from '@/utils/format';
 
-export type BlockTab = 'sonoanatomia' | 'ergonomia' | 'clinico';
-export const BLOCK_TABS: ReadonlyArray<{ id: BlockTab; label: string; icon: IconName }> = [
-  { id: 'sonoanatomia', label: 'Sonoanatomia', icon: 'layers' },
-  { id: 'ergonomia', label: 'Ergonomia & Probe', icon: 'probe' },
-  { id: 'clinico', label: 'Doses & Guia', icon: 'pill' },
-];
+/** Vistas de um bloqueio (trilho estilo AnSo): sonoanatomia, ergonomia (fotos do paciente/probe) e notas. */
+export type BlockTab = 'sonoanatomia' | 'ergonomia' | 'notas';
 
-export function isBlockTab(v: string | undefined): v is BlockTab {
-  return v === 'sonoanatomia' || v === 'ergonomia' || v === 'clinico';
+export interface RailItem {
+  id: BlockTab;
+  label: string;
+  icon: IconName;
+  /** Quantidade de imagens disponíveis (mostrada como pontinhos). */
+  count?: number;
 }
 
-export function Tabs({ active, onChange }: { active: BlockTab; onChange: (t: BlockTab) => void }) {
+export function isBlockTab(v: string | undefined): v is BlockTab {
+  return v === 'sonoanatomia' || v === 'ergonomia' || v === 'notas';
+}
+
+/** Aceita os nomes antigos de aba em links salvos. */
+export function normalizeTab(v: string | undefined): BlockTab {
+  if (v === 'clinico') return 'notas';
+  return isBlockTab(v) ? v : 'sonoanatomia';
+}
+
+export function Tabs({ items, active, onChange }: { items: RailItem[]; active: BlockTab; onChange: (t: BlockTab) => void }) {
   return (
-    <div role="tablist" aria-label="Seções do bloqueio" className="mb-3 grid grid-cols-3 gap-1 rounded-xl border border-slate-800 bg-slate-900 p-1">
-      {BLOCK_TABS.map((t) => (
+    <div role="tablist" aria-label="Vistas do bloqueio" className="mb-3 flex gap-1 rounded-xl border border-slate-800 bg-slate-900 p-1 md:flex-col md:w-20">
+      {items.map((t) => (
         <button
           key={t.id}
           role="tab"
@@ -23,11 +33,20 @@ export function Tabs({ active, onChange }: { active: BlockTab; onChange: (t: Blo
           aria-selected={active === t.id}
           onClick={() => onChange(t.id)}
           className={cx(
-            'flex min-h-11 flex-col items-center justify-center gap-0.5 rounded-lg px-1 text-[11px] font-semibold transition-colors sm:flex-row sm:gap-1.5 sm:text-xs',
-            active === t.id ? 'bg-amber-500 text-slate-950' : 'text-slate-300 hover:bg-slate-800',
+            'flex min-h-12 flex-1 flex-col items-center justify-center gap-0.5 rounded-lg px-1 text-[11px] font-semibold transition-colors md:min-h-16',
+            active === t.id ? 'bg-slate-100 text-slate-950' : 'text-slate-300 hover:bg-slate-800',
           )}
         >
-          <Icon name={t.icon} size={16} />
+          <span className="relative">
+            <Icon name={t.icon} size={20} />
+            {t.count !== undefined && t.count > 0 && (
+              <span className="absolute -right-2 -top-1 flex gap-0.5">
+                {Array.from({ length: Math.min(t.count, 4) }).map((_, i) => (
+                  <span key={i} className={cx('h-1.5 w-1.5 rounded-full', active === t.id ? 'bg-slate-900' : 'bg-slate-400')} />
+                ))}
+              </span>
+            )}
+          </span>
           {t.label}
         </button>
       ))}

@@ -5,7 +5,7 @@ export function AttributionLine({ attribution, mode, compact }: { attribution?: 
   if (mode === 'C' && !attribution) {
     return compact ? null : (
       <p className="mt-2 text-[11px] text-slate-500">
-        Imagem: simulação B-mode gerada proceduralmente a partir do esquema anatômico (não é um exame real). Carregue uma foto real no Estúdio para substituí-la.
+        Imagem real deste bloqueio ainda em preparação. Você pode carregar a sua própria foto no Estúdio.
       </p>
     );
   }

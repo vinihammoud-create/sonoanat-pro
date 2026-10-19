@@ -7,18 +7,12 @@ export interface StructureInspectorProps {
   onClose: () => void;
 }
 
-/** Rodapé de inspeção anatômica: nome, aspecto ecográfico, alerta e nota. */
+/** Descrição da estrutura ativa: aspecto ecográfico, nota e alerta. */
 export function StructureInspector({ overlay, onClose }: StructureInspectorProps) {
-  if (!overlay) {
-    return (
-      <p className="mt-2 rounded-lg border border-dashed border-slate-800 px-3 py-2 text-center text-xs text-slate-500">
-        Toque em uma estrutura na imagem para ver o aspecto ecográfico e os alertas clínicos.
-      </p>
-    );
-  }
+  if (!overlay) return null;
   const st = LAYER_STYLES[overlay.type];
   return (
-    <div className="mt-2 animate-slide-up rounded-xl border bg-slate-900/90 p-3 text-sm" style={{ borderColor: st.stroke }} aria-live="polite">
+    <div className="mt-3 animate-slide-up rounded-xl border bg-slate-900/90 p-3 text-sm" style={{ borderColor: st.stroke }} aria-live="polite">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
           <span className="inline-block h-3 w-3 shrink-0 rounded-sm" style={{ background: st.stroke }} />
@@ -31,7 +25,7 @@ export function StructureInspector({ overlay, onClose }: StructureInspectorProps
       </div>
       {overlay.echo && (
         <p className="mt-1.5 text-slate-300">
-          <span className="font-semibold text-slate-200">Aspecto ecográfico: </span>
+          <span className="font-semibold text-slate-200">Na imagem: </span>
           {overlay.echo}
         </p>
       )}

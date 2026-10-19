@@ -7,7 +7,7 @@ import { toggleFavorite } from '@/db/repo';
 import { BlockThumbnail } from '@/components/viewer/BlockThumbnail';
 
 const MODE_TONE = { A: 'emerald', B: 'emerald', C: 'slate' } as const;
-const MODE_TEXT = { A: 'Imagem real', B: 'Par real', C: 'Simulação' } as const;
+const MODE_TEXT = { A: 'Imagem real', B: 'Imagem real', C: 'Em preparação' } as const;
 
 export function BlockListItem({ block }: { block: Block }) {
   const favorites = useFavorites();

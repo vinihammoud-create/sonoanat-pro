@@ -34,7 +34,7 @@ export function TopBar({ title, subtitle, showBack, backTo, right }: TopBarProps
         </div>
       )}
       <div className="min-w-0 flex-1">
-        <h1 className="truncate text-base font-semibold leading-tight">{title}</h1>
+        <h1 className="line-clamp-2 text-[15px] font-semibold leading-tight">{title}</h1>
         {subtitle && <p className="truncate text-xs text-slate-400">{subtitle}</p>}
       </div>
       {right && <div className="flex shrink-0 items-center gap-1 pr-1">{right}</div>}

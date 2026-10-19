@@ -1,24 +1,25 @@
 import { useCallback, useReducer } from 'react';
-import { LAYER_TYPES, type AppSettings, type LayerType } from '@/types';
+import type { AppSettings } from '@/types';
 
 export interface ViewerState {
-  visible: Record<LayerType, boolean>;
+  /** Ids das estruturas atualmente exibidas sobre a imagem (começa vazio = imagem limpa). */
+  shown: ReadonlySet<string>;
   labelsOn: boolean;
   /** 15–100 (%). */
   opacity: number;
   /** true enquanto o botão "Segure: US puro" está pressionado. */
   hidden: boolean;
   flipped: boolean;
+  /** Estrutura cuja descrição aparece no rodapé. */
   selectedId: string | null;
-  /** Opacidade da camada anotada no modo B, 0–100. */
+  /** Opacidade da imagem anotada no modo B, 0–100. */
   pairOpacity: number;
 }
 
 export type ViewerAction =
-  | { type: 'toggleLayer'; layer: LayerType }
-  | { type: 'setLayer'; layer: LayerType; on: boolean }
-  | { type: 'allOn' }
-  | { type: 'allOff' }
+  | { type: 'toggle'; id: string }
+  | { type: 'showAll'; ids: string[] }
+  | { type: 'clear' }
   | { type: 'setLabels'; on: boolean }
   | { type: 'setOpacity'; value: number }
   | { type: 'setHidden'; on: boolean }
@@ -27,13 +28,9 @@ export type ViewerAction =
   | { type: 'setPairOpacity'; value: number }
   | { type: 'reset'; settings: AppSettings };
 
-export function allLayers(on: boolean): Record<LayerType, boolean> {
-  return Object.fromEntries(LAYER_TYPES.map((t) => [t, on])) as Record<LayerType, boolean>;
-}
-
 export function initialViewerState(settings: AppSettings): ViewerState {
   return {
-    visible: allLayers(true),
+    shown: new Set(),
     labelsOn: settings.defaultLabelsOn,
     opacity: Math.max(15, Math.min(100, settings.defaultOpacity)),
     hidden: false,
@@ -45,14 +42,19 @@ export function initialViewerState(settings: AppSettings): ViewerState {
 
 export function viewerReducer(state: ViewerState, action: ViewerAction): ViewerState {
   switch (action.type) {
-    case 'toggleLayer':
-      return { ...state, visible: { ...state.visible, [action.layer]: !state.visible[action.layer] } };
-    case 'setLayer':
-      return { ...state, visible: { ...state.visible, [action.layer]: action.on } };
-    case 'allOn':
-      return { ...state, visible: allLayers(true) };
-    case 'allOff':
-      return { ...state, visible: allLayers(false), selectedId: null };
+    case 'toggle': {
+      const shown = new Set(state.shown);
+      if (shown.has(action.id)) {
+        shown.delete(action.id);
+        return { ...state, shown, selectedId: state.selectedId === action.id ? null : state.selectedId };
+      }
+      shown.add(action.id);
+      return { ...state, shown, selectedId: action.id };
+    }
+    case 'showAll':
+      return { ...state, shown: new Set(action.ids) };
+    case 'clear':
+      return { ...state, shown: new Set(), selectedId: null };
     case 'setLabels':
       return { ...state, labelsOn: action.on };
     case 'setOpacity':
@@ -61,8 +63,12 @@ export function viewerReducer(state: ViewerState, action: ViewerAction): ViewerS
       return state.hidden === action.on ? state : { ...state, hidden: action.on };
     case 'toggleFlip':
       return { ...state, flipped: !state.flipped };
-    case 'select':
-      return { ...state, selectedId: action.id };
+    case 'select': {
+      if (action.id === null) return { ...state, selectedId: null };
+      // Selecionar pela imagem também garante que a estrutura esteja visível.
+      const shown = state.shown.has(action.id) ? state.shown : new Set([...state.shown, action.id]);
+      return { ...state, shown, selectedId: action.id };
+    }
     case 'setPairOpacity':
       return { ...state, pairOpacity: Math.max(0, Math.min(100, Math.round(action.value))) };
     case 'reset':

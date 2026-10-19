@@ -16,7 +16,7 @@ export interface SonoViewerProps {
   onSelect: (id: string | null) => void;
 }
 
-const MODE_LABEL: Record<string, string> = { A: 'imagem real', B: 'par real', C: 'simulação' };
+const MODE_LABEL: Record<string, string> = { A: 'imagem real', B: 'imagem real', C: '' };
 
 function ZoomButtons() {
   const { zoomIn, zoomOut, resetTransform } = useControls();
@@ -65,7 +65,7 @@ export function SonoViewer({ block, state, onSelect }: SonoViewerProps) {
             <BaseLayer block={block} flipped={state.flipped} pairOpacity={state.pairOpacity / 100} hideAnnotated={state.hidden} />
             <OverlaySvg
               overlays={block.overlays}
-              visible={state.visible}
+              shown={state.shown}
               labelsOn={state.labelsOn}
               opacity={state.opacity / 100}
               hidden={state.hidden}
