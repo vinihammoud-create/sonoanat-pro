@@ -132,5 +132,23 @@ export const peng: Block = {
       caption: "Bloqueio PENG guiado por ultrassom com transdutor convexo: painel A antes da injeção, painel B após a injeção mostrando a dispersão do anestésico sob o tendão do psoas.",
     },
   },
+  probeImages: [
+    {
+      mode: 'A',
+      baseUrl: 'images/real/peng/probe_cureus_a.webp',
+      attribution: {
+        title: "Analgesic and Functional Outcomes of Ultrasound-Guided Pericapsular Nerve Group (PENG), Fascia Iliaca, and Femoral Nerve Blocks in Hip Fracture Surgery: A Randomized Controlled Trial",
+        authors: "Senapati, Sahoo, Panda et al.",
+        journal: "Cureus",
+        year: "2026",
+        license: "CC BY 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+        sourceUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12988447/",
+        pmcid: "PMC12988447",
+        figure: "Figura 1, painel a",
+        caption: "Quadril neutro; transdutor convexo alinhado da espinha ilíaca ântero-inferior à eminência iliopúbica (cefálico à esquerda, medial para baixo na foto) e agulha entrando pela borda lateral, em plano.",
+      },
+    },
+  ],
   tags: ['quadril', 'fratura de colo de fêmur', 'artroplastia de quadril', 'tendão do psoas', 'poupador motor', 'EIAI', 'eminência iliopectínea'],
 };

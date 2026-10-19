@@ -141,5 +141,23 @@ export const poplitealSciatic: Block = {
       caption: "Bloqueio do ciático poplíteo: CPN nervo fibular comum; TN nervo tibial; PA artéria poplítea. Lateral à esquerda, medial à direita.",
     },
   },
+  probeImages: [
+    {
+      mode: 'A',
+      baseUrl: 'images/real/popliteal_sciatic/probe_jfmk.webp',
+      attribution: {
+        title: "Hydrorelease Within the Paraneural Sheath: A Cadaveric Study",
+        authors: "Shiwaku, Pirri, Otsubo et al.",
+        journal: "Journal of Functional Morphology and Kinesiology",
+        year: "2026",
+        license: "CC BY 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+        sourceUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13214621/",
+        pmcid: "PMC13214621",
+        figure: "Figura 2",
+        caption: "Vista posterior da perna com as posições padronizadas do transdutor (retângulos): terço médio da coxa para o ciático, linha articular para o tibial e 2 cm acima dela para o fibular comum.",
+      },
+    },
+  ],
   tags: ['ciático', 'poplíteo', 'bainha de Vloka', 'tibial', 'fibular comum', 'tornozelo', 'pé', 'membro inferior'],
 };

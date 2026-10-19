@@ -145,5 +145,23 @@ export const supraclavicular: Block = {
       },
     },
   ],
+  probeImages: [
+    {
+      mode: 'A',
+      baseUrl: 'images/real/supraclavicular/probe_senapati_a.webp',
+      attribution: {
+        title: "Ultrasound-Guided Selective Trunk Block Combined With Supraclavicular Nerve Block for Awake Shoulder Arthroscopy: A Case Series",
+        authors: "Rani, Kumar, Shrivastava et al.",
+        journal: "Cureus",
+        year: "2026",
+        license: "CC BY 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+        sourceUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13221573/",
+        pmcid: "PMC13221573",
+        figure: "Figura 1, painel A",
+        caption: "Paciente em decúbito dorsal com a cabeça virada para o lado oposto; transdutor linear na fossa supraclavicular, paralelo à clavícula, para ver o corner pocket. Agulha em plano, de lateral para medial.",
+      },
+    },
+  ],
   tags: ['plexo braquial', 'corner pocket', 'membro superior', 'mão', 'antebraço', 'cotovelo'],
 };

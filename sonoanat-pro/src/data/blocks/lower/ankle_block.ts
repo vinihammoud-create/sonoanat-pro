@@ -155,5 +155,23 @@ export const ankleBlock: Block = {
       caption: "Bloqueio do nervo tibial no tornozelo: TN nervo tibial; PTA artéria tibial posterior; MM maléolo medial. Posterior à esquerda, anterior à direita. Profundidade 2,7 cm.",
     },
   },
+  probeImages: [
+    {
+      mode: 'A',
+      baseUrl: 'images/real/ankle_block/probe_jfa.webp',
+      attribution: {
+        title: "In Vivo Ultrasound Characterization of the Tibial Nerve at the Supramalleolar Region",
+        authors: "Benimeli‐Fenollar, Macián‐Romero, Carbonell‐José et al.",
+        journal: "Journal of Foot and Ankle Research",
+        year: "2026",
+        license: "CC BY 4.0",
+        licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+        sourceUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13373442/",
+        pmcid: "PMC13373442",
+        figure: "Figura 1",
+        caption: "Transdutor linear posicionado 4 cm acima da borda inferior do maléolo medial, tornozelo em posição neutra, para localizar o nervo tibial posterior aos vasos tibiais posteriores.",
+      },
+    },
+  ],
   tags: ['tornozelo', 'ankle block', 'nervo tibial', 'pé', 'túnel do tarso', 'hálux', 'podologia'],
 };
