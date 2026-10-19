@@ -8,3 +8,4 @@ sonoanat-pro/tools/image_raw*/
 sonoanat-pro/tools/fetch_*.log
 .DS_Store
 Thumbs.db
+sonoanat-pro/tools/image_raw_fetch*.log
