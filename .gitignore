@@ -4,6 +4,7 @@ dev-dist/
 *.xapk
 *.apk
 *.tsbuildinfo
-sonoanat-pro/tools/image_raw/
+sonoanat-pro/tools/image_raw*/
+sonoanat-pro/tools/fetch_*.log
 .DS_Store
 Thumbs.db
